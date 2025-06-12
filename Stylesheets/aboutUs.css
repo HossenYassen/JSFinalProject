@@ -1,0 +1,179 @@
+/* General Reset for Consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Content Area */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2%;
+  margin: 20px 0;
+}
+
+main p {
+  text-align: left;
+  padding: 0 6%;
+}
+
+main h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+main p {
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+  text-align: justify;
+  margin-top: 10px;
+}
+
+main ul {
+  list-style-type: disc;
+  padding-left: 32px;
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+main ul li {
+  margin-bottom: 8px;
+}
+
+#about-btn {
+  background-color: #529cf0 !important;
+}
+
+/* About Us Section Styling */
+#about-us {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px;
+  background-color: var(--dark2);
+  color: var(--text-color);
+  border-radius: var(--border-rad);
+  max-width: 850px;
+  margin: 40px auto;
+  box-shadow: var(--box-shadow-effects);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#about-us:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#about-us h2 {
+  color: var(--text-color);
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+#about-us h3 {
+  color: var(--text-color);
+  font-size: 1.3em;
+  margin-top: 25px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#about-us p {
+  font-size: 1.1em;
+  color: var(--text-color);
+  line-height: 1.8;
+  text-align: justify;
+  text-indent: 20px;
+}
+
+#about-us p strong {
+  font-weight: 600;
+}
+
+#about-us ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+#about-us ul li {
+  font-size: 1.1em;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+/* Responsive Design for Larger Screens */
+@media (max-width: 768px) {
+  #about-us {
+    padding: 30px;
+  }
+
+  #about-us h2 {
+    font-size: 2em;
+  }
+
+  #about-us h3 {
+    font-size: 1.2em;
+  }
+
+  #about-us p, #about-us ul li {
+    font-size: 1em;
+  }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 640px) {
+  #wrapper {
+    max-width: 90vw;
+    margin: 24px auto;
+    padding: 0 12px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  #nav-bar {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  main h2 {
+    font-size: 1.6rem;
+  }
+
+  main p,
+  main ul {
+    font-size: 1rem;
+  }
+
+  #about-us {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  #about-us h2 {
+    font-size: 1.8rem;
+  }
+
+  #about-us h3 {
+    font-size: 1.1rem;
+  }
+
+  #about-us p {
+    font-size: 1rem;
+  }
+
+  #about-us ul li {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,115 @@
+/* Contact Us Section */
+#contact-us {
+  padding: 40px;
+  background-color: var(--dark2);
+  color: var(--text-color);
+  border-radius: var(--border-rad);
+  max-width: 850px;
+  margin: 40px auto;
+  box-shadow: var(--box-shadow-effects);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-us:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#contact-us h2 {
+  color: var(--text-color);
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+#contact-us h3 {
+  color: var(--text-color);
+  font-size: 1.3em;
+  margin-top: 25px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#contact-us p {
+  font-size: 1.1em;
+  color: var(--text-color);
+  line-height: 1.8;
+  text-align: center;
+}
+
+#contact-us ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#contact-us li {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+#contact-us a {
+  text-decoration: none;
+  color: var(--tag-color);
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+#contact-us a:hover {
+  color: var(--list-row-hover);
+  transform: scale(1.05);
+}
+
+#contact-us ul li:before {
+  content: "• ";
+  color: var(--tag-color);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Additional Styling for Email & GitHub Links */
+#contact-us ul li a {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#contact-us ul li a:hover {
+  color: var(--list-row-hover);
+  transform: translateX(5px);
+}
+
+#contact-us h3 + ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#contact-us-btn{
+    background-color: #529cf0 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #contact-us {
+    padding: 30px;
+  }
+
+  #contact-us h2 {
+    font-size: 2em;
+  }
+
+  #contact-us h3 {
+    font-size: 1.2em;
+  }
+
+  #contact-us ul li {
+    font-size: 1em;
+  }
+
+  #contact-us p {
+    font-size: 1em;
+  }
+}
