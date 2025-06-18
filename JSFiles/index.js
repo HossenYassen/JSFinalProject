@@ -94,7 +94,7 @@ let data =
     {
         name:       "Hossen Yassen",
         phone:      "050-959-3495",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Family",
         email:      "Hossen.Yassen@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -103,7 +103,7 @@ let data =
     {
         name:       "Sandra Jammal",
         phone:      "050-123-3456",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Family",
         email:      "Sandra.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -112,7 +112,7 @@ let data =
     {
         name:       "Celine Jammal",
         phone:      "050-111-1234",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "University",
         email:      "Celine.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -121,7 +121,7 @@ let data =
     {
         name:       "Hossen Yassen",
         phone:      "050-959-3495",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Firend",
         email:      "Hossen.Yassen@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -130,7 +130,7 @@ let data =
     {
         name:       "Sandra Jammal",
         phone:      "050-123-3456",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Parent",
         email:      "Sandra.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -139,7 +139,7 @@ let data =
     {
         name:       "Celine Jammal",
         phone:      "050-111-1234",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Sister",
         email:      "Celine.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -148,7 +148,7 @@ let data =
     {
         name:       "Hossen Yassen",
         phone:      "050-959-3495",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Family",
         email:      "Hossen.Yassen@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -157,7 +157,7 @@ let data =
     {
         name:       "Sandra Jammal",
         phone:      "050-123-3456",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Family",
         email:      "Sandra.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -166,7 +166,7 @@ let data =
     {
         name:       "Celine Jammal",
         phone:      "050-111-1234",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "University",
         email:      "Celine.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -175,7 +175,7 @@ let data =
     {
         name:       "Hossen Yassen",
         phone:      "050-959-3495",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Firend",
         email:      "Hossen.Yassen@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -184,7 +184,7 @@ let data =
     {
         name:       "Sandra Jammal",
         phone:      "050-123-3456",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Parent",
         email:      "Sandra.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -193,7 +193,7 @@ let data =
     {
         name:       "Celine Jammal",
         phone:      "050-111-1234",
-        profileImg: "/src/icons/profile.png",
+        profileImg: "./src/icons/profile.png",
         tag:        "Sister",
         email:      "Celine.Jammal@Hotmail.Com",
         address:    "Haifa, Ben Gurion St.",
@@ -225,16 +225,17 @@ data.forEach((elem, idx)=>{
         </div>
         <div class="row-btns">
             <div class="body-cell contact-buttons info-button">
-                <img src="/src/icons/info.png" alt="info" title="info">
+                <img src="./src/icons/info.png" alt="info" title="info">
             </div>
             <div class="body-cell contact-buttons update-button">
-                <img src="/src/icons/edit.png" alt="update" title="update">
+                <img src="./src/icons/edit.png" alt="update" title="update">
             </div>
             <div class="body-cell contact-buttons delete-contact-button">
-                <img src="/src/icons/delete.png" alt="delete" title="delete">
+                <img src="./src/icons/delete.png" alt="delete" title="delete">
             </div>
         </div>
     </li>
     `;
     contactsList.appendChild(li);
-}) 
+}) ;
+//#endregion Show Contact In Table
