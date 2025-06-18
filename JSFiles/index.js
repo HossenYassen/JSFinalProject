@@ -207,7 +207,7 @@ data.forEach((elem, idx)=>{
     li.className = "list-row";
     li.innerHTML = 
     `
-    <li class="list-row">
+    <li class="list-row" data-id=${idx}>
         <div class="body-cell row-index">${idx + 1}</div>
         <div class="body-cell row-fav">
             <img class="not-fav-icon" src="./src/icons/favorite_star.png" alt="favorite start", title="favorite start">
@@ -225,7 +225,7 @@ data.forEach((elem, idx)=>{
         </div>
         <div class="row-btns">
             <div class="body-cell contact-buttons info-button">
-                <img src="./src/icons/info.png" alt="info" title="info">
+                <img class="info-button" src="./src/icons/info.png" alt="info" title="info">
             </div>
             <div class="body-cell contact-buttons update-button">
                 <img src="./src/icons/edit.png" alt="update" title="update">
@@ -239,3 +239,13 @@ data.forEach((elem, idx)=>{
     contactsList.appendChild(li);
 }) ;
 //#endregion Show Contact In Table
+
+contactsList.addEventListener('click',(e)=>{
+    if(e.target.classList.contains('info-button')){
+        const li=e.target.closest('li')
+        
+
+        console.log(li.getAttribute('data-id'))
+    }
+
+})
