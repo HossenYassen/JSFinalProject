@@ -87,3 +87,154 @@ contactDeleteModalCancelBtn.addEventListener("click", () => {
     contactDeleteModal.style.display = "none";
 });
 //#endregion
+
+//#region Show Contact In Table
+let data = 
+[
+    {
+        name:       "Hossen Yassen",
+        phone:      "050-959-3495",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Family",
+        email:      "Hossen.Yassen@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Boss!"
+    },
+    {
+        name:       "Sandra Jammal",
+        phone:      "050-123-3456",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Family",
+        email:      "Sandra.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Queen!"
+    },
+    {
+        name:       "Celine Jammal",
+        phone:      "050-111-1234",
+        profileImg: "/src/icons/profile.png",
+        tag:        "University",
+        email:      "Celine.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "Good"
+    },
+    {
+        name:       "Hossen Yassen",
+        phone:      "050-959-3495",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Firend",
+        email:      "Hossen.Yassen@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Boss!"
+    },
+    {
+        name:       "Sandra Jammal",
+        phone:      "050-123-3456",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Parent",
+        email:      "Sandra.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Queen!"
+    },
+    {
+        name:       "Celine Jammal",
+        phone:      "050-111-1234",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Sister",
+        email:      "Celine.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "Good"
+    },
+    {
+        name:       "Hossen Yassen",
+        phone:      "050-959-3495",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Family",
+        email:      "Hossen.Yassen@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Boss!"
+    },
+    {
+        name:       "Sandra Jammal",
+        phone:      "050-123-3456",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Family",
+        email:      "Sandra.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Queen!"
+    },
+    {
+        name:       "Celine Jammal",
+        phone:      "050-111-1234",
+        profileImg: "/src/icons/profile.png",
+        tag:        "University",
+        email:      "Celine.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "Good"
+    },
+    {
+        name:       "Hossen Yassen",
+        phone:      "050-959-3495",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Firend",
+        email:      "Hossen.Yassen@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Boss!"
+    },
+    {
+        name:       "Sandra Jammal",
+        phone:      "050-123-3456",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Parent",
+        email:      "Sandra.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "I am The Queen!"
+    },
+    {
+        name:       "Celine Jammal",
+        phone:      "050-111-1234",
+        profileImg: "/src/icons/profile.png",
+        tag:        "Sister",
+        email:      "Celine.Jammal@Hotmail.Com",
+        address:    "Haifa, Ben Gurion St.",
+        comment:    "Good"
+    }
+];
+
+const contactsList = document.getElementById("contacts-list");
+data.forEach((elem, idx)=>{
+    let li = document.createElement("li");
+    li.className = "list-row";
+    li.innerHTML = 
+    `
+    <li class="list-row">
+        <div class="body-cell row-index">${idx + 1}</div>
+        <div class="body-cell row-fav">
+            <img class="not-fav-icon" src="/src/icons/favorite_star.png" alt="favorite start", title="favorite start">
+        </div>
+        <div class="body-cell row-pic-name">
+            <img class="profile-pic" src=${elem.profileImg} alt="${elem.name} profile Picture"
+                title="${elem.name} profile Picture">
+            <h3 class="contact-name">${elem.name}</h3>
+        </div>
+        <div class="body-cell row-tag">
+            <span>${elem.tag}</span>
+        </div>
+        <div class="body-cell row-phone">
+            <h4 class="phone-number">${elem.phone}</h4>
+        </div>
+        <div class="row-btns">
+            <div class="body-cell contact-buttons info-button">
+                <img src="/src/icons/info.png" alt="info" title="info">
+            </div>
+            <div class="body-cell contact-buttons update-button">
+                <img src="/src/icons/edit.png" alt="update" title="update">
+            </div>
+            <div class="body-cell contact-buttons delete-contact-button">
+                <img src="/src/icons/delete.png" alt="delete" title="delete">
+            </div>
+        </div>
+    </li>
+    `;
+    contactsList.appendChild(li);
+}) 

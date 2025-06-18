@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Stylesheets/index.css">
-    <link rel="shortcut icon" href="/src/icons/phonebookFavIcon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="src/icons/phonebookFavIcon.png" type="image/x-icon">
     <title>Phone Book</title>
 </head>
 
@@ -14,9 +14,9 @@
         <header>
             <h1>Phone Book</h1>
             <nav id="nav-bar">
-                <a id="home-btn" href="/htmlPages/index.html">Home</a>
-                <a id="contact-us-btn" href="/htmlPages/contactUs.html">Contact Us</a>
-                <a id="about-btn" href="/htmlPages/aboutUs.html">About Us</a>
+                <a id="home-btn" href="htmlPages/index.html">Home</a>
+                <a id="contact-us-btn" href="htmlPages/contactUs.html">Contact Us</a>
+                <a id="about-btn" href="htmlPages/aboutUs.html">About Us</a>
             </nav>
         </header>
         <main>
@@ -24,95 +24,56 @@
             <div id="search-nav-section">
                 <div id="search-bar-div">
                     <input id="search-input" type="text" placeholder="Search...">
-                    <img id="search-icon" src="/src/icons/seach-icon.png" alt="search" title="search">
+                    <img id="search-icon" src="src/icons/seach-icon.png" alt="search" title="search">
                 </div>
 
                 <div id="search-btns-div">
                     <button id="add-contact-btn">
-                        <img class="btns-imgs" src="/src/icons/add-user.png" alt="add contact" title="add contact">
+                        <img class="btns-imgs" src="src/icons/add-user.png" alt="add contact" title="add contact">
                     </button>
 
                     <button id="delete-all-btn">
-                        <img class="btns-imgs" src="/src/icons/delete-all.png" alt="delete all" title="delete all">
+                        <img class="btns-imgs" src="src/icons/delete-all.png" alt="delete all" title="delete all">
                     </button>
                 </div>
             </div>
 
             <!-- Contacts Data Section -->
             <div id="contacts-data-section">
+                <!-- List Header -->
+                <div id="list-header">
+                    <div id="index-title" class="list-header-titles">Filter</div>
+                    <div id="fav-title" class="list-header-titles">
+                        <img class="not-fav-icon" src="src/icons/not_favorite_star.png" alt="favorite start" ,
+                            title="favorite start">
+                    </div>
+                    <div id="name-title" class="list-header-titles">
+                        <label for="cars">Choose a tag:</label>
+                        <select name="tag" id="tags">
+                            <option value="family">Family</option>
+                            <option value="friends">Friends</option>
+                            <option value="university">University</option>
+                            <option value="work">Work</option>
+                        </select>
+                    </div>
+                    <div id="tag-title" class="list-header-titles"></div>
+                    <div id="phone-title" class="list-header-titles"></div>
+                    <div id="list-header-btns">
+                        <div class="list-header-titles">Info</div>
+                        <div class="list-header-titles">Update</div>
+                        <div class="list-header-titles">Delete</div>
+                    </div>
+                </div>
+
+                <!-- List Body -->
                 <ul id="contacts-list">
-                    <!-- List Header -->
-                    <li class="list-header-titles">#</li>
-                    <li class="list-header-titles">Contact</li>
-                    <li class="list-header-titles">Phone Number</li>
-                    <li class="list-header-titles">Info</li>
-                    <li class="list-header-titles">Update</li>
-                    <li class="list-header-titles">Delete</li>
-
-                    <!-- We Add Here contacts Dynamically! -->
-                    <li class="list-row">
-                        <div class="body-cell index">1</div>
-                        <div class="body-cell contact-pic-name">
-                            <img src="/src/icons/profile.png" alt="profile Picture" title="profile Picture">
-                            <h3>Hossen Yassen</h3>
-                        </div>
-                        <div class="body-cell phone">
-                            <h4>050-959-3495</h4>
-                        </div>
-                        <div class="body-cell contact-buttons info-button">
-                            <img src="/src/icons/info.png" alt="info" title="info">
-                        </div>
-                        <div class="body-cell contact-buttons update-button">
-                            <img src="/src/icons/edit.png" alt="update" title="update">
-                        </div>
-                        <div class="body-cell contact-buttons delete-contact-button">
-                            <img src="/src/icons/delete.png" alt="delete" title="delete">
-                        </div>
-                    </li>
-
-                    <li class="list-row">
-                        <div class="body-cell index">2</div>
-                        <div class="body-cell contact-pic-name">
-                            <img src="/src/icons/profile.png" alt="profile Picture" title="profile Picture">
-                            <h3>Celine Jammal</h3>
-                        </div>
-                        <div class="body-cell phone">
-                            <h4>050-959-3495</h4>
-                        </div>
-                        <div class="body-cell contact-buttons info-button">
-                            <img src="/src/icons/info.png" alt="info" title="info">
-                        </div>
-                        <div class="body-cell contact-buttons update-button">
-                            <img src="/src/icons/edit.png" alt="update" title="update">
-                        </div>
-                        <div class="body-cell contact-buttons delete-contact-button">
-                            <img src="/src/icons/delete.png" alt="delete" title="delete">
-                        </div>
-                    </li>
-
-                    <li class="list-row">
-                        <div class="body-cell index">3</div>
-                        <div class="body-cell contact-pic-name">
-                            <img src="/src/icons/profile.png" alt="profile Picture" title="profile Picture">
-                            <h3>Sandra Jammal</h3>
-                        </div>
-                        <div class="body-cell phone">
-                            <h4>050-959-3495</h4>
-                        </div>
-                        <div class="body-cell contact-buttons info-button">
-                            <img src="/src/icons/info.png" alt="info" title="info">
-                        </div>
-                        <div class="body-cell contact-buttons update-button">
-                            <img src="/src/icons/edit.png" alt="update" title="update">
-                        </div>
-                        <div class="body-cell contact-buttons delete-contact-button">
-                            <img src="/src/icons/delete.png" alt="delete" title="delete">
-                        </div>
-                    </li>
-
-                    <!-- List Footer -->
-                    <li class="list-footer">3 People</li>
+                    <!-- Contacts will appear here -->
                 </ul>
+
+                <!-- List Footer -->
+                <div id="list-footer">
+                    <p id="footer-data">3 People</p>
+                </div>
             </div>
         </main>
         <footer>
@@ -128,7 +89,7 @@
         <h2>Add New Contact</h2>
         <form id="add-contact-form">
             <div class="new-contact-modal-divs contact-detail-pic-and-name">
-                <img src="/src/icons/profile.png" alt="profile Picture" title="profile Picture">
+                <img src="src/icons/profile.png" alt="profile Picture" title="profile Picture">
                 <input type="url" id="contact-profile-image" placeholder="Contact Profile Image URL">
             </div>
             <div class="new-contact-modal-divs">
@@ -177,7 +138,7 @@
         <h2>Contact Details</h2>
         <div id="contact-details-content">
             <div class="contact-detail-pic-and-name">
-                <img src="/src/icons/profile.png" alt="profile Picture" title="profile Picture">
+                <img src="src/icons/profile.png" alt="profile Picture" title="profile Picture">
                 <h3 class="detail-value">Hossen Yassen</h3>
             </div>
             <div class="contact-detail">
@@ -215,7 +176,7 @@
             <div class="update-modal-divs">
                 <label>Age</label>
                 <input type="text" id="update-contact-age" placeholder="Updated age" required>
-                
+
             </div>
             <div class="update-modal-divs">
                 <label>Phone</label>
