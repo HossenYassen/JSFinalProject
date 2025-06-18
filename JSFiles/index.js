@@ -210,7 +210,7 @@ data.forEach((elem, idx)=>{
     <li class="list-row">
         <div class="body-cell row-index">${idx + 1}</div>
         <div class="body-cell row-fav">
-            <img class="not-fav-icon" src="/src/icons/favorite_star.png" alt="favorite start", title="favorite start">
+            <img class="not-fav-icon" src="./src/icons/favorite_star.png" alt="favorite start", title="favorite start">
         </div>
         <div class="body-cell row-pic-name">
             <img class="profile-pic" src=${elem.profileImg} alt="${elem.name} profile Picture"
