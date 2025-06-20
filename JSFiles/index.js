@@ -238,7 +238,7 @@ data.forEach((elem, idx)=>{
     `;
     contactsList.appendChild(li);
 }) ;
-//#endregion Show Contact In Table
+//#endregion Show Contact In Contacts Table
 
 contactsList.addEventListener('click',(e)=>{
     if(e.target.classList.contains('info-button')){
