@@ -44,16 +44,16 @@
                 <div id="list-header">
                     <div id="index-title" class="list-header-titles">Filter</div>
                     <div id="fav-title" class="list-header-titles">
-                        <img class="not-fav-icon" src="src/icons/not_favorite_star.png" alt="favorite start" ,
-                            title="favorite start">
+                        <img id="fav-icon-header" class="not-fav-icon" src="src/icons/not_favorite_star.png"
+                            alt="favorite start" , title="favorite start">
                     </div>
                     <div id="name-title" class="list-header-titles">
-                        <label for="cars">Choose a tag:</label>
+                        <label for="tags">Choose a tag:</label>
                         <select name="tag" id="tags">
-                            <option value="family">Family</option>
-                            <option value="friends">Friends</option>
-                            <option value="university">University</option>
-                            <option value="work">Work</option>
+                            <option value="Family">Family</option>
+                            <option value="Friends">Friends</option>
+                            <option value="Fniversity">University</option>
+                            <option value="Fork">Work</option>
                         </select>
                     </div>
                     <div id="tag-title" class="list-header-titles"></div>
@@ -76,7 +76,12 @@
 
                 <!-- List Footer -->
                 <div id="list-footer">
-                    <p id="footer-data">3 People</p>
+                    <p id="footer-data">
+                        <span id="contactsNum">
+                            <!-- The contacts number in the list will be update automatically -->
+                        </span>
+                        People Appear In The List
+                    </p>
                 </div>
             </div>
         </main>

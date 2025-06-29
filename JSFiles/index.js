@@ -52,43 +52,46 @@ let data =
 // Icons Paths:
 const defalutProfilePic = "../src/icons/profile.png";
 const favoriteIcon = "./src/icons/favorite_star.png";
-const notFavoriteIcon = "src/icons/not_favorite_star.png";
+const notFavoriteIcon = "./src/icons/not_favorite_star.png";
 
-const tags = 
-[
-    {
-        name: "Family",
-        class: "family-tag"
-    },
-    {
-        name: "University",
-        class: "university-tag"
-    },
-    {
-        name: "Work",
-        class: "work-tag"
-    },
-    {
-        name: "Friend",
-        class: "friend-tag"
-    }
-];
+// Filters Default States:
+const favoritesFiltered = false;
+
+const tags =
+    [
+        {
+            name: "Family",
+            class: "family-tag"
+        },
+        {
+            name: "University",
+            class: "university-tag"
+        },
+        {
+            name: "Work",
+            class: "work-tag"
+        },
+        {
+            name: "Friend",
+            class: "friend-tag"
+        }
+    ];
 
 // General Functions:
-const sortData = function(arr){
-    const sorted = arr.sort((a,b)=>{
+const sortData = function (arr) {
+    const sorted = arr.sort((a, b) => {
         return a.name < b.name ? -1 : 1;
     })
     return sorted;
 }
 
-const getTagClass = function(tag){
+const getTagClass = function (tag) {
     return tag ? tag.class : "";
 }
 
-const findTag = function(tagType){
-    for(let i = 0; i < tags.length; i++){
-        if(tags[i].name === tagType)
+const findTag = function (tagType) {
+    for (let i = 0; i < tags.length; i++) {
+        if (tags[i].name.toLowerCase() === tagType.toLowerCase())
             return tags[i];
     }
     return null;
@@ -98,6 +101,8 @@ const findTag = function(tagType){
 //#region Handiling Show Contact In Table
 const contactsList = document.getElementById("contacts-list");
 const emptyListMsg = document.getElementById("empty-contact-msg");
+const contactsNum = document.getElementById("contactsNum");
+
 const fillContactsIntoList = function (contactsData) {
     if (contactsData === null || contactsData.length === 0) {
         contactsList.style.display = "none";
@@ -141,6 +146,7 @@ const fillContactsIntoList = function (contactsData) {
     `;
             contactsList.appendChild(li);
         });
+        contactsNum.innerHTML = sorted.length;
     }
 }
 
@@ -185,7 +191,7 @@ addNewContactModal.addEventListener("click", (e) => {
         }
         addContactForm.reset();
         addNewContactModal.style.display = "none";
-        
+
     }
 });
 //#endregion
@@ -209,8 +215,29 @@ deleteAllContactsModal.addEventListener("click", (e) => {
 //#endregion
 
 //#region Handiling List Contacts Filtering
-
+const filteringElement = document.getElementById("list-header");
+const favoriteFilterIcon = document.getElementById("fav-icon-header");
+favoriteFilterIcon.addEventListener("click", () => {
+    if (favoriteFilterIcon.src.includes(notFavoriteIcon.substring(1))) {
+        // favoriteFilterIcon.src returns the full path not the relative path
+        // so to solve this we get rid of the dot in notFavoriteIcon prefix relative path
+        // and i check if the relative path of notFavoriteIcon included into the full path
+        favoriteFilterIcon.setAttribute("src", favoriteIcon);
+        fillContactsIntoList(showFavoritesContacts(data));
+    }
+    else {
+        favoriteFilterIcon.setAttribute("src", notFavoriteIcon);
+        fillContactsIntoList(data);
+    }
+})
 //#region Handiling Favorite Contacts Filtering
+const showFavoritesContacts = function (arr) {
+    const favorites = arr.filter((elem) => {
+        if (elem.isFavorite)
+            return true;
+    })
+    return favorites;
+}
 //#endregion
 
 //#region Handiling Filtering Contacts By Tag
@@ -219,33 +246,35 @@ deleteAllContactsModal.addEventListener("click", (e) => {
 //#endregion
 
 //#region Handiling Contact Row Buttuns: Favorite, Info, Edit, Delete Buttons
-contactsList.addEventListener("click", (e)=>{
+contactsList.addEventListener("click", (e) => {
     e.preventDefault();
     const li = e.target.closest("li");
     const btn = e.target.closest("div");
     const dataId = li.getAttribute("data-id");
 
-    if(btn.classList.contains("info-button")){
+    if (btn.classList.contains("info-button")) {
         showContactFullInfo(dataId);
     }
-    else if(btn.classList.contains("update-button")){
+    else if (btn.classList.contains("update-button")) {
         console.log(`we pressed on update btn in row #${dataId}`);
     }
-    else if(btn.classList.contains("delete-contact-button")){
+    else if (btn.classList.contains("delete-contact-button")) {
         console.log(`we pressed on delete btn in row #${dataId}`);
+        deleteContactFunc(data, dataId);
+        fillContactsIntoList(data);
     }
-    else if(btn.classList.contains("row-fav")){
+    else if (btn.classList.contains("row-fav")) {
         console.log(`Change The Favoritness for row #${dataId}`);
         data[dataId].isFavorite = !data[dataId].isFavorite;
         fillContactsIntoList(data);
     }
-    else{
+    else {
         showContactFullInfo(dataId);
     }
 })
 
 //#region Handiling Show Contact Full Information
-const showContactFullInfo = function(index){
+const showContactFullInfo = function (index) {
     // <!-- Show Contact Details Modal -->
     // <dialog id="contact-details-dialog">
     //     <h2>Contact Details</h2>
@@ -279,8 +308,8 @@ const showContactFullInfo = function(index){
     // </dialog>
     const showInfoDialog = document.createElement("dialog");
     showInfoDialog.id = "contact-details-dialog";
-    showInfoDialog.innerHTML = 
-    `
+    showInfoDialog.innerHTML =
+        `
     <h2>Contact Details</h2>
     <div id="contact-details-content">
         <div class="contact-detail-pic-and-name">
@@ -311,14 +340,14 @@ const showContactFullInfo = function(index){
     </div>
     `
     document.body.appendChild(showInfoDialog);
-    showInfoDialog.addEventListener("click", (e)=>{
+    showInfoDialog.addEventListener("click", (e) => {
         e.preventDefault();
         const btn = e.target.closest("button");
-        if(btn){
+        if (btn) {
             showInfoDialog.style.display = "none";
         }
     });
-     showInfoDialog.style.display = "block";
+    showInfoDialog.style.display = "block";
 }
 //#endregion
 
@@ -326,6 +355,9 @@ const showContactFullInfo = function(index){
 //#endregion
 
 //#region Handiling Delete Contact
+const deleteContactFunc = function(arr, index){
+    arr.splice(index, 1);
+}
 //#endregion
 
 //#endregion
