@@ -226,10 +226,25 @@ main {
   border-radius: var(--border-rad);
 }
 
+#empty-contact-msg {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  display: none;
+}
+
+#empty-contact-msg p {
+  font-size: 3rem;
+}
+
 #contacts-list {
   list-style: none;
   width: 100%;
-  max-height: 400px;
+  max-height: 300px;
   background-color: var(--dark1);
   box-shadow: var(--box-shadow-effects);
   margin: 0;
@@ -237,6 +252,11 @@ main {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+}
+
+html::-webkit-scrollbar,
+#contacts-list::-webkit-scrollbar {
+  width: 0;
 }
 
 /* List Header */
@@ -259,7 +279,6 @@ main {
   font-weight: bold;
   height: 50px;
   flex-grow: 1;
-  /* flex-shrink: 1; */
   flex-basis: 0;
   padding: 0 8px;
   text-align: center;
@@ -268,12 +287,10 @@ main {
 #index-title {
   flex-grow: 0.5;
   border-top-left-radius: var(--border-rad);
-  /* background-color: #41973e; */
 }
 
 #fav-title {
   flex-grow: 0.5;
-  /* background-color: blue; */
 }
 
 .not-fav-icon {
@@ -286,17 +303,14 @@ main {
   justify-content: flex-start;
   padding-left: 2%;
   flex-grow: 2;
-  /* background-color: red; */
 }
 
 #tag-title {
   flex-grow: 1;
-  /* background-color: orange; */
 }
 
 #phone-title {
   flex-grow: 1.5;
-  /* background-color: gold; */
 }
 
 #list-header-btns {
@@ -310,7 +324,6 @@ main {
   flex-grow: 1;
   padding: 0;
   text-align: center;
-  /* background-color: gray; */
 }
 
 .list-header-titles:last-child {
@@ -319,7 +332,7 @@ main {
 
 /* List Row */
 .list-row {
-  padding: 0;
+  padding: 1% 0;
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -331,7 +344,7 @@ main {
 }
 
 .list-row:last-child {
-  border: none;
+  border-bottom: none;
 }
 
 .list-row:hover {
@@ -346,7 +359,6 @@ main {
   align-items: center;
   font-weight: bold;
   flex-grow: 1;
-  /* flex-shrink: 1; */
   flex-basis: 0;
   padding: 0 10px;
   text-align: center;
@@ -355,46 +367,56 @@ main {
 .row-index {
   flex-grow: 0.5;
   width: 100%;
-  /* background-color:#41973e; */
 }
 
 .row-fav {
   flex-grow: 0.5;
   width: 100%;
-  /* background-color: blue; */
 }
 
 .row-pic-name {
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
   flex-grow: 2;
   gap: 10px;
   text-align: left;
-  /* background-color: red; */
 }
 
 .row-tag {
   flex-grow: 1;
-  /* background-color: orange; */
 }
 
 .row-tag span {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   border: none;
-  background-color: var(--list-row-hover);
   color: var(--text-color);
   border-radius: var(--border-rad);
   cursor: pointer;
   font-size: 1rem;
 }
 
+.family-tag {
+  background-color: var(--not-ok-btn-color);
+}
+
+.university-tag {
+  background-color: var(--tag-color);
+}
+
+.work-tag {
+  background-color: var(--ok-btn-color);
+}
+
+.friend-tag {
+  background-color: #dfe229;
+}
+
 .row-phone {
   flex-grow: 1.5;
   width: 100px;
   flex-shrink: 0;
-  /* background-color: gold; */
 }
 
 .row-btns {
@@ -404,7 +426,6 @@ main {
   justify-content: center;
   align-items: center;
   padding: 0 8px;
-  /* background-color: gray; */
 }
 
 .contact-buttons img:hover {
@@ -506,6 +527,13 @@ dialog input[type="url"],
   font-size: 1rem;
 }
 
+#comments-area {
+  min-width: 250px;
+  max-width: 312px;
+  min-height: 60px;
+  max-height: 80px;
+}
+
 dialog input[type="text"]:focus,
 dialog input[type="tel"]:focus,
 dialog input[type="email"]:focus,
@@ -581,19 +609,6 @@ dialog .dialog-actions {
   gap: 0.7rem;
 }
 
-.contact-detail-pic-and-name {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2vh;
-  border: 2px solid var(--border-color-input);
-  border-radius: var(--border-rad);
-  padding: 5%;
-  width: 100%;
-  background-color: var(--dark1);
-}
-
 .contact-detail,
 .update-modal-divs,
 .new-contact-modal-divs {
@@ -602,26 +617,27 @@ dialog .dialog-actions {
   grid-template-columns: 1fr 3fr;
   align-items: center;
   gap: 1rem;
-  background-color: var(--dark3);
-  padding: 0.8rem 1rem;
+  margin-top: 0.5rem;
   border-radius: var(--border-rad);
   width: 100%;
   box-shadow: var(--box-shadow-effects);
 }
 
-#update-contact-form {
-  border-radius: var(--border-rad);
-}
-
-.update-modal-divs,
-.new-contact-modal-divs {
-  padding: 0rem 1rem;
+.contact-detail-pic-and-name {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 3fr;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background-color: transparent;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid var(--border-color-input);
+  border-radius: var(--border-rad);
+  padding: 0.8rem 1rem;
+  width: 100%;
+  background-color: var(--dark1);
+}
+
+#update-contact-form {
+  border-radius: var(--border-rad);
 }
 
 .contact-detail label,
@@ -770,6 +786,180 @@ dialog .dialog-actions {
     width: 30px;
   }
 
+  /*#region Modal */
+  /* #region Dialogs */
+  dialog {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  dialog h2 {
+    text-align: center;
+  }
+
+  dialog p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  dialog input[type="text"],
+  dialog input[type="tel"],
+  dialog input[type="email"],
+  dialog input[type="url"],
+  #comments-area,
+  #update-comments-area {
+    font-size: 0.8rem;
+  }
+
+  dialog input[type="text"]:focus,
+  dialog input[type="tel"]:focus,
+  dialog input[type="email"]:focus,
+  dialog input[type="url"]:focus,
+  #comments-area:focus {
+    border-color: var(--dark3);
+  }
+
+  dialog button {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    background-color: var(--dark4);
+    color: var(--text-color);
+    border-radius: var(--border-rad);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  dialog button:hover {
+    background-color: var(--dark5);
+  }
+
+  dialog .dialog-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #confirm-delete-btn,
+  #confirm-delete-all-btn,
+  #close-contact-details-dialog {
+    background-color: var(--not-ok-btn-color);
+  }
+
+  #confirm-delete-btn:hover,
+  #confirm-delete-all-btn:hover,
+  #close-update-contact-dialog:hover,
+  #close-contact-details-dialog:hover,
+  #close-add-contact-dialog:hover {
+    background-color: var(--not-ok-btn-color-hover);
+  }
+
+  #close-delete-dialog,
+  #close-delete-all-dialog {
+    background-color: var(--dark4);
+  }
+
+  #close-delete-dialog:hover,
+  #close-delete-all-dialog:hover {
+    background-color: var(--dark5);
+  }
+
+  #edit-form button[type="submit"],
+  #update-button,
+  #add-new-contact-button {
+    background-color: var(--ok-btn-color);
+  }
+
+  #edit-form button[type="submit"]:hover,
+  #update-button:hover,
+  #add-new-contact-button:hover {
+    background-color: var(--ok-btn-color-hover);
+  }
+  /* #region Contact Details Modal */
+  #contact-details-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .contact-detail,
+  .update-modal-divs,
+  .new-contact-modal-divs {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    border-radius: var(--border-rad);
+    width: 100%;
+    box-shadow: var(--box-shadow-effects);
+  }
+
+  .contact-detail-pic-and-name {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid var(--border-color-input);
+    border-radius: var(--border-rad);
+    padding: 0.8rem 1rem;
+    width: 100%;
+    background-color: var(--dark1);
+  }
+
+  #comments-label {
+    width: 70%;
+    background-color: var(--not-ok-btn-color-hover);
+  }
+
+  .add-contact-comments-area {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  #update-contact-form {
+    border-radius: var(--border-rad);
+  }
+
+  .contact-detail label,
+  .contact-detail h3 {
+    color: var(--text-color);
+  }
+
+  .contact-detail label,
+  .update-modal-divs label,
+  .new-contact-modal-divs label {
+    border: 2px solid var(--border-color-input);
+    text-align: center;
+    padding: 1vh;
+    border-radius: var(--border-rad);
+    background-color: var(--tag-color);
+  }
+
+  .contact-detail .detail-value {
+    color: var(--text-color);
+    font-size: 1.1rem;
+  }
+
+  .contact-detail img {
+    width: var(--buttons-width);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  /* #endregion Contact Details Modal */
+  /* #endregion Dialogs */
+  /* #endregion Modal */
+
   /* List Footer */
   #list-footer {
     display: flex;
@@ -797,9 +987,7 @@ dialog .dialog-actions {
 }
 
 @media screen and (min-width: 801px) and (max-width: 1025px) {
-  #wrapper{
-
-
+  #wrapper {
     width: 90vw;
   }
 }

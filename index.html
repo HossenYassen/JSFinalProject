@@ -69,6 +69,10 @@
                 <ul id="contacts-list">
                     <!-- Contacts will appear here -->
                 </ul>
+                <div id="empty-contact-msg">
+                    <img class="empty-list-icon" src="src/icons/empty_list.png" alt="empty list" title="empty list">
+                    <p>Empty Contacts List!</p>
+                </div>
 
                 <!-- List Footer -->
                 <div id="list-footer">
@@ -94,27 +98,27 @@
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-name">Name</label>
-                <input type="text" id="new-contact-name" placeholder="Name" required>
+                <input type="text" id="new-contact-name" name="name" placeholder="Name" required>
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-age">Age</label>
-                <input type="text" id="new-contact-age" placeholder="age" required>
+                <input type="text" id="new-contact-age" name="age" placeholder="age" required>
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-phone">Phone</label>
-                <input type="tel" id="new-contact-phone" placeholder="Phone Number" required>
+                <input type="tel" id="new-contact-phone" name="tel" placeholder="Phone Number" required>
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-address">Address</label>
-                <input type="text" id="new-contact-address" placeholder="Contact Address" required>
+                <input type="text" id="new-contact-address" name="address" placeholder="Contact Address" required>
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-email">Email</label>
-                <input type="email" id="new-email" placeholder="Contact Email" required>
+                <input type="email" id="new-email" name="email" placeholder="Contact Email" required>
             </div>
-            <div class="new-contact-modal-divs">
-                <label for="comments-area">Comments</label>
-                <textarea id="comments-area" placeholder="Write Your Comments Here..."></textarea>
+            <div class="new-contact-modal-divs add-contact-comments-area">
+                <label id="comments-label" for="comments-area">Comments</label>
+                <textarea id="comments-area" name="comment" placeholder="Write Your Comments Here..."></textarea>
             </div>
             <div class="dialog-actions">
                 <button id="add-new-contact-button">Add Contact</button>
@@ -130,38 +134,6 @@
         <div class="dialog-actions">
             <button id="confirm-delete-all-btn">Yes, Delete All</button>
             <button id="cancel-delete-all-btn">Cancel</button>
-        </div>
-    </dialog>
-
-    <!-- Show Contact Details Modal -->
-    <dialog id="contact-details-dialog">
-        <h2>Contact Details</h2>
-        <div id="contact-details-content">
-            <div class="contact-detail-pic-and-name">
-                <img src="src/icons/profile.png" alt="profile Picture" title="profile Picture">
-                <h3 class="detail-value">Hossen Yassen</h3>
-            </div>
-            <div class="contact-detail">
-                <label>Age</label>
-                <span class="detail-value">25</span>
-            </div>
-            <div class="contact-detail">
-                <label>Phone</label>
-                <span class="detail-value">+123456789</span>
-            </div>
-            <div class="contact-detail">
-                <label>Address</label>
-                <span class="detail-value">Haifa, Bat-Galim, st.118</span>
-            </div>
-            <div class="contact-detail">
-                <label>Email</label>
-                <span class="detail-value">hossen@example.com</span>
-            </div>
-            <div class="contact-detail">
-                <label>Comments</label>
-                <span class="detail-value">Lorem ipsum dolor sit amet.</span>
-            </div>
-            <button id="close-contact-details-dialog">Close</button>
         </div>
     </dialog>
 
