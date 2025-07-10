@@ -244,7 +244,7 @@ main {
 #contacts-list {
   list-style: none;
   width: 100%;
-  max-height: 300px;
+  max-height: 320px;
   background-color: var(--dark1);
   box-shadow: var(--box-shadow-effects);
   margin: 0;
@@ -290,7 +290,13 @@ html::-webkit-scrollbar,
 }
 
 #fav-title {
-  flex-grow: 0.5;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 40px;
 }
 
 .not-fav-icon {
@@ -299,18 +305,33 @@ html::-webkit-scrollbar,
   margin: 0;
 }
 
-#name-title {
-  justify-content: flex-start;
-  padding-left: 2%;
+#tag-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
   flex-grow: 2;
+  /* border: red solid 1px; */
 }
 
-#tag-title {
-  flex-grow: 1;
+#tags {
+  font-size: medium;
+  font-weight: bold;
+  height: 60%;
+  width: 70%;
+  padding: 0 2%;
+  color: white;
+  text-align: center;
+  border-radius: var(--border-rad);
+  background-color: var(--dark5);
 }
 
 #phone-title {
   flex-grow: 1.5;
+  display: flex;
+  justify-content: center;
+  padding-right: 30px;
+  /* border: red solid 1px; */
 }
 
 #list-header-btns {
@@ -339,7 +360,7 @@ html::-webkit-scrollbar,
   justify-content: space-between;
   width: 100%;
   background-color: var(--dark1);
-  border-bottom: 2px solid var(--dark4) !important;
+  border-bottom: 2px solid var(--dark4);
   height: 80px;
 }
 
@@ -387,7 +408,8 @@ html::-webkit-scrollbar,
   flex-grow: 1;
 }
 
-.row-tag span {
+.row-tag span,
+#tag-select-container {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   border: none;
