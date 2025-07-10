@@ -50,7 +50,7 @@ let data =
 
 // General Variables:
 // Icons Paths:
-const defalutProfilePic = "../src/icons/profile.png";
+const defalutProfilePic = "./src/icons/profile.png";
 const favoriteIcon = "./src/icons/favorite_star.png";
 const notFavoriteIcon = "./src/icons/not_favorite_star.png";
 
