@@ -1,0 +1,137 @@
+/* Contact Photos Section */
+#contacts-photos-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2%;
+  background-color: var(--dark2);
+  border-radius: var(--border-rad);
+  gap: 20px;
+}
+
+#photos-player {
+  list-style: none;
+  width: 100%;
+  height: 400px;
+  box-shadow: var(--box-shadow-effects);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  border-radius: var(--border-rad);
+}
+
+
+#photos-nav {
+  width: 30%;
+  border-radius: var(--border-rad);
+  overflow-y: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.contact-photo-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid var(--dark5);
+  width: 100%;
+  height: 100px;
+  padding: 2%;
+  border-radius: var(--border-rad);
+  background-color: var(--dark1);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.contact-photo-item:hover{
+  background-color: var(--dark3);
+  border: 2px solid white;
+  transition: background-color ease-in-out 0.3s,
+              border ease-in-out 0.3s;
+}
+
+.contact-photo-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  padding: 1%;
+  border-radius: var(--border-rad);
+}
+
+.contact-photo-div> img{
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-rad);
+}
+
+.img-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  border-radius: var(--border-rad);
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#viewer-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--dark5);
+  width: 70%;
+  border-radius: var(--border-rad);
+  background-color: var(--dark1);
+}
+
+#photo-viewer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  border-radius: var(--border-rad);
+  padding: 1%;
+}
+
+#large-photo{
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-rad);
+}
+
+#photo-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+  border-radius: var(--border-rad);
+}
+
+#large-photo-title{
+  font-size: 1.3rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+}

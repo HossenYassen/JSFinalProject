@@ -1,3 +1,5 @@
+'use strict'
+
 //#region Contacts Data Array
 let data =
     [
@@ -16,7 +18,7 @@ let data =
             name: "Sandra Jammal",
             age: 21,
             phone: "050-123-3456",
-            profileImg: "",
+            profileImg: "https://picsum.photos/2",
             tag: "Friend",
             email: "Sandra.Jammal@Hotmail.Com",
             address: "Haifa, Ben Gurion St.",
@@ -27,8 +29,8 @@ let data =
             name: "Celine Jammal",
             age: 21,
             phone: "050-111-1234",
-            profileImg: "",
-            tag: "University",
+            profileImg: "https://picsum.photos/3",
+            tag: "School",
             email: "Celine.Jammal@Hotmail.Com",
             address: "Haifa, Ben Gurion St.",
             comment: "Good",
@@ -38,7 +40,7 @@ let data =
             name: "Tasneem Khateeb",
             age: 20,
             phone: "050-225-5444",
-            profileImg: "",
+            profileImg: "https://picsum.photos/4",
             tag: "Work",
             email: "Tasneem.Khateeb@Hotmail.Com",
             address: "Haifa, Ben Gurion St.",
@@ -48,14 +50,12 @@ let data =
     ];
 //#endregion
 
+//#region General Funtions & Variables
 // General Variables:
 // Icons Paths:
 const defalutProfilePic = "./src/icons/profile.png";
 const favoriteIcon = "./src/icons/favorite_star.png";
 const notFavoriteIcon = "./src/icons/not_favorite_star.png";
-
-// Filters Default States:
-const favoritesFiltered = false;
 
 const tags =
     [
@@ -64,8 +64,8 @@ const tags =
             class: "family-tag"
         },
         {
-            name: "University",
-            class: "university-tag"
+            name: "School",
+            class: "school-tag"
         },
         {
             name: "Work",
@@ -96,7 +96,7 @@ const findTag = function (tagType) {
     }
     return null;
 }
-
+//#endregion
 
 //#region Handiling Show Contact In Table
 const contactsList = document.getElementById("contacts-list");
@@ -204,8 +204,7 @@ deleteAllContactsModal.addEventListener("click", (e) => {
         const btnID = btn.getAttribute("id")
 
         if (btnID === "confirm-delete-all-btn") {
-            data = [];
-            fillContactsIntoList(data);
+            fillContactsIntoList([]);
         }
         deleteAllContactsModal.style.display = "none";
     }
@@ -355,9 +354,16 @@ const showContactFullInfo = function (index) {
 //#endregion
 
 //#region Handiling Delete Contact
-const deleteContactFunc = function(arr, index){
+const deleteContactFunc = function (arr, index) {
     arr.splice(index, 1);
 }
+//#endregion
+
+//#endregion
+
+//#region Contacts Photo Gallery JavaScript
+
+
 //#endregion
 
 //#endregion

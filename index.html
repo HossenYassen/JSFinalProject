@@ -15,8 +15,9 @@
             <h1>Phone Book</h1>
             <nav id="nav-bar">
                 <a id="home-btn" href="./index.html">Home</a>
-                <a id="contact-us-btn" href="htmlPages/contactUs.html">Contact Us</a>
-                <a id="about-btn" href="htmlPages/aboutUs.html">About Us</a>
+                <a id="contact-us-btn" href="/htmlPages/contactUs.html">Contact Us</a>
+                <a id="about-btn" href="/htmlPages/aboutUs.html">About Us</a>
+                <a id="photos-gallery" href="/htmlPages/photosGallery.html">Photos Gallery</a>
             </nav>
         </header>
         <main>
@@ -42,7 +43,9 @@
             <div id="contacts-data-section">
                 <!-- List Header -->
                 <div id="list-header">
-                    <div id="index-title" class="list-header-titles">Filter</div>
+                    <div id="index-title" class="list-header-titles">
+                        <img id="sort-icon" src="./src/icons/sort.png" alt="sort" title="sort">
+                    </div>
                     <div id="fav-title" class="list-header-titles">
                         <img id="fav-icon-header" class="not-fav-icon" src="src/icons/not_favorite_star.png"
                             alt="favorite start" , title="favorite start">
@@ -51,7 +54,7 @@
                     <div id="tag-title" class="list-header-titles">
                         <!-- <label for="tags">Sort By Tag</label> -->
                         <select name="tag" id="tags">
-                            <option value="" disabled selected>-- Sort By Tag --</option>
+                            <option value="" selected>Sort By Tag</option>
                             <option value="Family">Family</option>
                             <option value="Friends">Friends</option>
                             <option value="Fniversity">University</option>
