@@ -166,7 +166,7 @@ main {
   padding: 0 1rem;
   outline: none;
   border: none;
-  width: 30vw;
+  width: 32vw;
   font-size: 1.5rem;
   color: var(--text-color);
   background-color: var(--dark3);
@@ -370,6 +370,10 @@ html::-webkit-scrollbar,
   height: 80px;
 }
 
+.vanish{
+  display: none;
+}
+
 .list-row:last-child {
   border-bottom: none;
 }
@@ -566,6 +570,11 @@ dialog input[type="url"],
   max-height: 80px;
 }
 
+#invalid-input-message{
+  color: var(--not-ok-btn-color);
+  margin-bottom: 1rem;
+}
+
 dialog input[type="text"]:focus,
 dialog input[type="tel"]:focus,
 dialog input[type="email"]:focus,
@@ -599,7 +608,8 @@ dialog .dialog-actions {
 
 #confirm-delete-btn,
 #confirm-delete-all-btn,
-#close-contact-details-dialog {
+#close-contact-details-dialog,
+#cancel-no-contacts-to-delete-btn{
   background-color: var(--not-ok-btn-color);
 }
 
@@ -607,12 +617,14 @@ dialog .dialog-actions {
 #confirm-delete-all-btn:hover,
 #close-update-contact-dialog:hover,
 #close-contact-details-dialog:hover,
-#close-add-contact-dialog:hover {
+#close-add-contact-dialog:hover,
+#cancel-no-contacts-to-delete-btn:hover {
   background-color: var(--not-ok-btn-color-hover);
 }
 
 #close-delete-dialog,
-#close-delete-all-dialog {
+#close-delete-all-dialog,
+#no-contacts-to-delete-dialog {
   background-color: var(--dark4);
 }
 
@@ -648,7 +660,7 @@ dialog .dialog-actions {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 3fr;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-top: 0.5rem;
   border-radius: var(--border-rad);
   width: 100%;
@@ -663,7 +675,7 @@ dialog .dialog-actions {
   gap: 1rem;
   border: 2px solid var(--border-color-input);
   border-radius: var(--border-rad);
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   background-color: var(--dark1);
 }
