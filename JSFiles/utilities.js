@@ -1,6 +1,9 @@
 'use strict'
 // This file contains general utility variables and functions that can be used across various modules
 
+// Shared Elements:
+export const contactsList = document.getElementById("contacts-list");
+
 // Variables:
 export const defalutProfilePic = "./src/icons/profile.png";
 export const favoriteIcon = "./src/icons/favorite_star.png";

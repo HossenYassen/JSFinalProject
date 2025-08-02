@@ -51,6 +51,7 @@
 .contact-photo-item:hover{
   background-color: var(--dark3);
   border: 2px solid white;
+  cursor: pointer;
   transition: background-color ease-in-out 0.3s,
               border ease-in-out 0.3s;
 }

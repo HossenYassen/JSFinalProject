@@ -15,16 +15,16 @@
             <h1>Phone Book</h1>
             <nav id="nav-bar">
                 <a id="home-btn" href="./index.html">Home</a>
-                <a id="contact-us-btn" href="./htmlPages/contactUs.html">Contact Us</a>
-                <a id="about-btn" href="./htmlPages/aboutUs.html">About Us</a>
-                <a id="photos-gallery" href="./htmlPages/photosGallery.html">Photos Gallery</a>
+                <a id="contact-us-btn" href="/htmlPages/contactUs.html">Contact Us</a>
+                <a id="about-btn" href="/htmlPages/aboutUs.html">About Us</a>
+                <a id="photos-gallery" href="/htmlPages/photosGallery.html">Photos Gallery</a>
             </nav>
         </header>
         <main>
             <!--Search Navigation Section-->
             <div id="search-nav-section">
                 <div id="search-bar-div">
-                    <input id="search-input" type="text" placeholder="Search...">
+                    <input id="search-input" type="search" placeholder="Search Contact By Name, Phone, Tag...">
                     <img id="search-icon" src="src/icons/seach-icon.png" alt="search" title="search">
                 </div>
 
@@ -52,13 +52,8 @@
                         <label for="fav-icon-header">Show Favorits</label>
                     </div>
                     <div id="tag-title" class="list-header-titles">
-                        <!-- <label for="tags">Sort By Tag</label> -->
                         <select name="tag" id="tags">
-                            <option value="" selected>Sort By Tag</option>
-                            <option value="Family">Family</option>
-                            <option value="Friends">Friends</option>
-                            <option value="Fniversity">University</option>
-                            <option value="Fork">Work</option>
+                            <!-- Filled Automatically via JS -->
                         </select>
                     </div>
                     <div id="phone-title" class="list-header-titles">Phone</div>
@@ -100,30 +95,33 @@
     <!-- Add New Contact Modal -->
     <dialog id="add-contact-dialog">
         <h2>Add New Contact</h2>
+        <div id="invalid-input-message"><!-- Will Be filled with js --></div>
         <form id="add-contact-form">
             <div class="new-contact-modal-divs contact-detail-pic-and-name">
                 <img src="src/icons/profile.png" alt="profile Picture" title="profile Picture">
-                <input type="url" id="contact-profile-image" placeholder="Contact Profile Image URL">
+                <!-- <input type="file"> -->
+                <input type="url" id="contact-profile-image" name="url" placeholder="Contact Profile Image URL">
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-name">Name</label>
-                <input type="text" id="new-contact-name" name="name" placeholder="Name" required>
-            </div>
-            <div class="new-contact-modal-divs">
-                <label for="new-contact-age">Age</label>
-                <input type="text" id="new-contact-age" name="age" placeholder="age" required>
+                <input type="text" id="new-contact-name" name="name" placeholder="Name">
+
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-phone">Phone</label>
-                <input type="tel" id="new-contact-phone" name="tel" placeholder="Phone Number" required>
+                <input type="tel" id="new-contact-phone" name="tel" placeholder="Phone Number">
+            </div>
+            <div class="new-contact-modal-divs">
+                <label for="new-contact-age">Age</label>
+                <input type="text" id="new-contact-age" name="age" placeholder="age">
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-contact-address">Address</label>
-                <input type="text" id="new-contact-address" name="address" placeholder="Contact Address" required>
+                <input type="text" id="new-contact-address" name="address" placeholder="Contact Address">
             </div>
             <div class="new-contact-modal-divs">
                 <label for="new-email">Email</label>
-                <input type="email" id="new-email" name="email" placeholder="Contact Email" required>
+                <input type="email" id="new-contact-email" name="email" placeholder="Contact Email">
             </div>
             <div class="new-contact-modal-divs add-contact-comments-area">
                 <label id="comments-label" for="comments-area">Comments</label>
@@ -149,27 +147,28 @@
     <!-- Update Contact Info Modal -->
     <dialog id="update-contact-dialog">
         <h2>Update Contact Info</h2>
+        <div id="invalid-input-message"><!-- Will Be filled with js --></div>
         <form id="update-contact-form">
             <div class="update-modal-divs">
                 <label>Name</label>
-                <input type="text" id="update-contact-name" placeholder="Updated Name" required>
+                <input type="text" id="update-contact-name" placeholder="Updated Name">
             </div>
             <div class="update-modal-divs">
                 <label>Age</label>
-                <input type="text" id="update-contact-age" placeholder="Updated age" required>
+                <input type="text" id="update-contact-age" placeholder="Updated age">
 
             </div>
             <div class="update-modal-divs">
                 <label>Phone</label>
-                <input type="tel" id="update-contact-phone" placeholder="Updated Phone Number" required>
+                <input type="tel" id="update-contact-phone" placeholder="Updated Phone Number">
             </div>
             <div class="update-modal-divs">
                 <label>Address</label>
-                <input type="text" id="update-contact-address" placeholder="Updated Contact Address" required>
+                <input type="text" id="update-contact-address" placeholder="Updated Contact Address">
             </div>
             <div class="update-modal-divs">
                 <label>Email</label>
-                <input type="email" id="update-email" placeholder="Updated Contact Email" required>
+                <input type="email" id="update-email" placeholder="Updated Contact Email">
             </div>
             <div class="update-modal-divs">
                 <label>Image</label>
@@ -188,7 +187,7 @@
 
     <!-- Delete Contact Modal -->
     <dialog id="delete-contact-dialog">
-        <h2>Are you sure you want to delete this contact?</h2>
+        <h2>Are you sure you want to delete <span id="contact-name"></span> ?</h2>
         <p>This action cannot be undone.</p>
         <div class="dialog-actions">
             <button id="confirm-delete-btn">Yes, Delete</button>
@@ -196,6 +195,24 @@
         </div>
     </dialog>
 
+    <!-- No Contacts For Deletion Moda (When The Contacts List Is Empty) -->
+    <dialog id="no-contacts-to-delete-dialog">
+        <h2>There Are No contacts To Delete!</h2>
+        <div class="dialog-actions">
+            <button id="cancel-no-contacts-to-delete-btn">Cancel</button>
+        </div>
+    </dialog>
+
+
+
+
+    <script type="module" src="./JSFiles/searchContact.js"></script>
+    <script type="module" src="./JSFiles/deleteAllContacts.js"></script>
+
+    <script type="module" src="./JSFiles/filters/tagsFilter.js"></script>
+    <script type="module" src="./JSFiles/filters/favoritesFilter.js"></script>
+
+    <script type="module" src="./JSFiles/listItemBtns/deleteContact.js"></script>
     <script type="module" src="./JSFiles/index.js"></script>
 </body>
 

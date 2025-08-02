@@ -2,7 +2,8 @@
 import {
             defalutProfilePic,
             favoriteIcon,
-            notFavoriteIcon
+            notFavoriteIcon,
+            contactsList
         } from "./utilities.js";
 import { getTagClass, findTag } from "./tags.js";
 
@@ -68,7 +69,6 @@ const sortData = function (contactsData) {
 };
 
 // Handiling Showing Contact In Table
-const contactsList = document.getElementById("contacts-list");
 const emptyListMsg = document.getElementById("empty-contact-msg");
 const contactsNum = document.getElementById("contactsNum");
 
