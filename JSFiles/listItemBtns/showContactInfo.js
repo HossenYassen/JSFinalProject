@@ -15,7 +15,9 @@ contactsList.addEventListener("click", (e) => {
     if (li) {
         const btn = e.target.closest("div");
         const btnClassList = btn.classList;
-        if (btn && !btnClassList.contains("update-button") && !btnClassList.contains("delete-contact-button")) {
+        if (btn && !btnClassList.contains("update-button") 
+                && !btnClassList.contains("delete-contact-button")
+                && !btnClassList.contains("row-fav")) {
             const dataId = li.getAttribute("data-id");
             showContactFullInfo(dataId);
         }
@@ -75,3 +77,4 @@ const showContactFullInfo = function (index) {
     });
     showInfoDialog.style.display = "block";
 }
+
