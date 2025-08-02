@@ -42,26 +42,49 @@ const showContactFullInfo = function (index) {
         
         <!-- Display contact details: Age, Phone, Address, Email, Comments -->
         <div class="contact-detail">
-            <label>Age</label>
-            <span class="detail-value">${data[index].age}</span>
-        </div>
-        <div class="contact-detail">
             <label>Phone</label>
             <span class="detail-value">${data[index].phone}</span>
         </div>
-        <div class="contact-detail">
-            <label>Address</label>
-            <span class="detail-value">${data[index].address}</span>
-        </div>
-        <div class="contact-detail">
-            <label>Email</label>
-            <span class="detail-value">${data[index].email}</span>
-        </div>
-        <div class="contact-detail">
-            <label>Comments</label>
-            <span class="detail-value">${data[index].comment}</span>
-        </div>
-        
+        ${data[index].age !== "" ? 
+            `
+            <div class="contact-detail">
+                <label>Age</label>
+                <span class="detail-value">${data[index].age}</span>
+            </div>
+            `
+            :
+            ""
+        }
+        ${data[index].address !== "" ? 
+            `
+            <div class="contact-detail">
+                <label>Address</label>
+                <span class="detail-value">${data[index].address}</span>
+            </div>
+            `
+            :
+            ""
+        }
+        ${data[index].email !== "" ? 
+            `
+            <div class="contact-detail">
+                <label>Email</label>
+                <span class="detail-value">${data[index].email}</span>
+            </div>
+            `
+            :
+            ""
+        }
+        ${data[index].comment !== "" ? 
+            `
+            <div class="contact-detail">
+                <label>Comments</label>
+                <span class="detail-value">${data[index].comment}</span>
+            </div>
+            `
+            :
+            ""
+        }
         <!-- Close button to close the contact details modal -->
         <button id="close-contact-details-dialog">Close</button>
     </div>
@@ -77,4 +100,3 @@ const showContactFullInfo = function (index) {
     });
     showInfoDialog.style.display = "block";
 }
-
