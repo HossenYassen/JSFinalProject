@@ -15,7 +15,6 @@ favoriteFilterIcon.addEventListener("click", () => {
     // The 'src' attribute returns the full URL of the image, so we check if the relative path of 'notFavoriteIcon' is included in the full URL
     if (favoriteFilterIcon.src.includes(notFavoriteIcon.substring(1))) {
         favoriteFilterIcon.setAttribute("src", favoriteIcon);
-
         fillContactsIntoList(showFavoritesContacts(data));
     }
     else {
