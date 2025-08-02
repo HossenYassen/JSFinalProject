@@ -20,7 +20,8 @@ export let data =
             address: "Haifa, Ben Gurion St.",
             comment: "I am The Boss!",
             isFavorite: true,
-            lastModifiedTimeStamp: "00:00 - 02/06/2020"
+            addedTimeStamp: "[00:00] - 02/06/2025",
+            lastModifiedTimeStamp: ""
         },
         {
             name: "Sandra Jammal",
@@ -32,7 +33,8 @@ export let data =
             address: "Haifa, Ben Gurion St.",
             comment: "I am The Queen!",
             isFavorite: false,
-            lastModifiedTimeStamp: "00:00 - 02/06/2020"
+            addedTimeStamp: "[00:00] - 02/06/2025",
+            lastModifiedTimeStamp: ""
         },
         {
             name: "Celine Jammal",
@@ -44,7 +46,8 @@ export let data =
             address: "Haifa, Ben Gurion St.",
             comment: "Good",
             isFavorite: false,
-            lastModifiedTimeStamp: "00:00 - 02/06/2020"
+            addedTimeStamp: "[00:00] - 02/06/2025",
+            lastModifiedTimeStamp: ""
         },
         {
             name: "Ahmad Yassen",
@@ -56,7 +59,8 @@ export let data =
             address: "Haifa, Ben Gurion St.",
             comment: "Excellent",
             isFavorite: false,
-            lastModifiedTimeStamp: "00:00 - 02/06/2020"
+            addedTimeStamp: "[00:00] - 02/06/2025",
+            lastModifiedTimeStamp: "[00:00] - 02/06/2025"
         }
     ];
 

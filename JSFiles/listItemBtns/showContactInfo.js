@@ -1,12 +1,22 @@
 'use strict'
 
-import { contactsList } from "../utilities.js";
+import { contactsList, hideHTMLElement, showHTMLElement } from "../utilities.js";
 import { data } from "../contactsData.js";
 
 /* 
   This module is responsible for showing the full information about a contact when clicked.
   It creates a modal displaying detailed contact information.
 */
+
+const showInfoDialog = document.getElementById("contact-details-dialog");
+
+// Add an event listener to contacts info modal ro represent it on the screen
+showInfoDialog.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if(btn){
+        hideHTMLElement(showInfoDialog);
+    }
+});
 
 // Add an event listener to the contacts list to handle user clicks on contacts
 contactsList.addEventListener("click", (e) => {
@@ -15,9 +25,9 @@ contactsList.addEventListener("click", (e) => {
     if (li) {
         const btn = e.target.closest("div");
         const btnClassList = btn.classList;
-        if (btn && !btnClassList.contains("update-button") 
-                && !btnClassList.contains("delete-contact-button")
-                && !btnClassList.contains("row-fav")) {
+        if (btn && !btnClassList.contains("update-button")
+            && !btnClassList.contains("delete-contact-button")
+            && !btnClassList.contains("row-fav")) {
             const dataId = li.getAttribute("data-id");
             showContactFullInfo(dataId);
         }
@@ -26,8 +36,6 @@ contactsList.addEventListener("click", (e) => {
 
 // Function to display the full details of a contact in a modal dialog
 const showContactFullInfo = function (index) {
-    const showInfoDialog = document.createElement("dialog");
-    showInfoDialog.id = "contact-details-dialog";
     showInfoDialog.innerHTML =
         `
     <h2>Contact Details</h2>
@@ -45,7 +53,7 @@ const showContactFullInfo = function (index) {
             <label>Phone</label>
             <span class="detail-value">${data[index].phone}</span>
         </div>
-        ${data[index].age !== "" ? 
+        ${data[index].age !== "" ?
             `
             <div class="contact-detail">
                 <label>Age</label>
@@ -55,7 +63,7 @@ const showContactFullInfo = function (index) {
             :
             ""
         }
-        ${data[index].address !== "" ? 
+        ${data[index].address !== "" ?
             `
             <div class="contact-detail">
                 <label>Address</label>
@@ -65,7 +73,7 @@ const showContactFullInfo = function (index) {
             :
             ""
         }
-        ${data[index].email !== "" ? 
+        ${data[index].email !== "" ?
             `
             <div class="contact-detail">
                 <label>Email</label>
@@ -75,7 +83,7 @@ const showContactFullInfo = function (index) {
             :
             ""
         }
-        ${data[index].comment !== "" ? 
+        ${data[index].comment !== "" ?
             `
             <div class="contact-detail">
                 <label>Comments</label>
@@ -87,16 +95,15 @@ const showContactFullInfo = function (index) {
         }
         <!-- Close button to close the contact details modal -->
         <button id="close-contact-details-dialog">Close</button>
+        <div id="timestamp">
+            <span id = "added-timestamp">Added In: ${data[index].addedTimeStamp}</span>
+            ${data[index].lastModifiedTimeStamp !== "" ?
+                `<span id = "updated-timestamp">Updated In: ${data[index].lastModifiedTimeStamp}</span>` : ""
+            }
+        </div>
     </div>
     `;
-    
+
     document.body.appendChild(showInfoDialog);
-    showInfoDialog.addEventListener("click", (e) => {
-        e.preventDefault();
-        const btn = e.target.closest("button");
-        if (btn) {
-            showInfoDialog.style.display = "none";
-        }
-    });
-    showInfoDialog.style.display = "block";
+    showHTMLElement(showInfoDialog);
 }

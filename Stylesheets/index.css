@@ -370,7 +370,7 @@ html::-webkit-scrollbar,
   height: 80px;
 }
 
-.vanish{
+.vanish {
   display: none;
 }
 
@@ -400,7 +400,7 @@ html::-webkit-scrollbar,
   width: 100%;
 }
 
-.profile-pic{
+.profile-pic {
   width: var(--profile-pic-w);
   border-radius: 50%;
 }
@@ -519,7 +519,7 @@ footer {
 dialog {
   width: 80%;
   max-width: 500px;
-  padding: 2rem;
+  padding: 2rem 2rem 10px 2rem;
   border-radius: var(--border-rad);
   background-color: var(--dark2);
   color: var(--text-color);
@@ -570,7 +570,7 @@ dialog input[type="url"],
   max-height: 80px;
 }
 
-#invalid-input-message{
+#invalid-input-message {
   color: var(--not-ok-btn-color);
   margin-bottom: 1rem;
 }
@@ -609,7 +609,7 @@ dialog .dialog-actions {
 #confirm-delete-btn,
 #confirm-delete-all-btn,
 #close-contact-details-dialog,
-#cancel-no-contacts-to-delete-btn{
+#cancel-no-contacts-to-delete-btn {
   background-color: var(--not-ok-btn-color);
 }
 
@@ -708,6 +708,14 @@ dialog .dialog-actions {
   width: var(--buttons-width);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+}
+
+#timestamp {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  font-size: small;
 }
 
 /* #endregion Contact Details Modal */
@@ -941,7 +949,7 @@ dialog .dialog-actions {
   dialog {
     width: 80%;
     max-width: 500px;
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 0;
     border-radius: var(--border-rad);
     background-color: var(--dark2);
     color: var(--text-color);
@@ -1505,7 +1513,7 @@ dialog .dialog-actions {
     padding-left: 40px;
   }
 
-  .not-fav-icon{
+  .not-fav-icon {
     width: 30px;
     padding: 0;
     margin: 0;
