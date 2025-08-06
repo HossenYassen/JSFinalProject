@@ -68,7 +68,7 @@ export let data =
 
 //Sorts an array of contact objects alphabetically by the 'name' property in ascending order.
 const sortData = function (contactsData) {
-    const sorted = contactsData.sort((a, b) => a.name.localeCompare(b.name));
+    const sorted = contactsData.sort((a, b) => a.name < b.name ? -1 : 1);
     return sorted;
 };
 
@@ -125,4 +125,22 @@ export const fillContactsIntoList = function (contactsData) {
         });
         contactsNum.innerHTML = sorted.length;
     }
-}
+};
+
+// List Row Hovering Effect:
+contactsList.addEventListener("mouseover", (e) => {
+    e.preventDefault();
+    const li = e.target.closest("li");
+    if(li){
+        li.classList.add("listRowHover");
+    }
+});
+
+// List Row Hovering Effect Canceling:
+contactsList.addEventListener("mouseout", (e) => {
+    e.preventDefault();
+    const li = e.target.closest("li");
+    if(li){
+        li.classList.remove("listRowHover");
+    }
+});

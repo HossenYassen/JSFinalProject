@@ -8,13 +8,13 @@ import { data } from "../contactsData.js";
   It creates a modal displaying detailed contact information.
 */
 
-const showInfoDialog = document.getElementById("contact-details-dialog");
+const contactInfoDialog = document.getElementById("contact-details-dialog");
 
 // Add an event listener to contacts info modal ro represent it on the screen
-showInfoDialog.addEventListener("click", (e) => {
+contactInfoDialog.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
     if(btn){
-        hideHTMLElement(showInfoDialog);
+        hideHTMLElement(contactInfoDialog);
     }
 });
 
@@ -36,13 +36,13 @@ contactsList.addEventListener("click", (e) => {
 
 // Function to display the full details of a contact in a modal dialog
 const showContactFullInfo = function (index) {
-    showInfoDialog.innerHTML =
+    contactInfoDialog.innerHTML =
         `
     <h2>Contact Details</h2>
     <div id="contact-details-content">
         <div class="contact-detail-pic-and-name">
             <!-- Display contact's profile picture or a default image if none exists -->
-            <img src=${data[index].profileImg === "" ? "defaultProfilePic.jpg" : data[index].profileImg} 
+            <img id="profile-image-show" src=${data[index].profileImg === "" ? "defaultProfilePic.jpg" : data[index].profileImg} 
                  alt="${data[index].name} profile Picture" 
                  title="${data[index].name} profile Picture">
             <h3 class="detail-value">${data[index].name}</h3>
@@ -53,7 +53,7 @@ const showContactFullInfo = function (index) {
             <label>Phone</label>
             <span class="detail-value">${data[index].phone}</span>
         </div>
-        ${data[index].age !== "" ?
+        ${data[index].age.toString().trim() !== "" ?
             `
             <div class="contact-detail">
                 <label>Age</label>
@@ -63,7 +63,7 @@ const showContactFullInfo = function (index) {
             :
             ""
         }
-        ${data[index].address !== "" ?
+        ${data[index].address.trim() !== "" ?
             `
             <div class="contact-detail">
                 <label>Address</label>
@@ -73,7 +73,7 @@ const showContactFullInfo = function (index) {
             :
             ""
         }
-        ${data[index].email !== "" ?
+        ${data[index].email.trim() !== "" ?
             `
             <div class="contact-detail">
                 <label>Email</label>
@@ -83,7 +83,7 @@ const showContactFullInfo = function (index) {
             :
             ""
         }
-        ${data[index].comment !== "" ?
+        ${data[index].comment.trim() !== "" ?
             `
             <div class="contact-detail">
                 <label>Comments</label>
@@ -104,6 +104,6 @@ const showContactFullInfo = function (index) {
     </div>
     `;
 
-    document.body.appendChild(showInfoDialog);
-    showHTMLElement(showInfoDialog);
+    document.body.appendChild(contactInfoDialog);
+    showHTMLElement(contactInfoDialog);
 }

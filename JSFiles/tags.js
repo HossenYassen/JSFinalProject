@@ -29,14 +29,18 @@ const tags =
 const tagsSelectElement = document.getElementById("tags");
 
 // Filling it:
-tags.forEach((tag, idx)=>{
-    const opt = document.createElement("option");
-    opt.setAttribute("value", tag.name)
-    if(idx === 0)
-        opt.setAttribute("selected", "selected");
-    opt.innerHTML = `${tag.name}`
-    tagsSelectElement.appendChild(opt);
-});
+export const fillTags = (tagsSelect, withHeader) => {
+    tags.forEach((tag, idx) => {
+        const opt = document.createElement("option");
+        opt.setAttribute("value", tag.name)
+        if (idx === 0)
+            opt.setAttribute("selected", "selected");
+        opt.innerHTML = `${tag.name}`
+        tagsSelect.appendChild(opt);
+    });
+
+};
+fillTags(tagsSelectElement);
 
 // Helper Functions:
 
@@ -57,4 +61,4 @@ const findTag = function (tagType) {
     return null;
 }
 
-export {getTagClass, findTag}
+export { getTagClass, findTag }

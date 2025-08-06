@@ -1,3 +1,7 @@
+'use strict'
+
+import { capitalizeTheFirstLetterOfEachWord } from "./utilities.js";
+
 const galleryItems = [
   {
     title: "URBAN LANDSCAPE NIGHT",
@@ -51,20 +55,12 @@ const fillPhotosNav = function(imagesData)
             <img src=${imgData.image} alt=${imgData.alt}>
         </div>
         <div class="img-title">
-            <span class="title">${capitalizeFirstLetterOfEachWord(imgData.title)}</span>
+            <span class="title">${capitalizeTheFirstLetterOfEachWord(imgData.title)}</span>
         </div>
         `;
         photosNav.appendChild(li);
     });
 }
-
-const capitalizeFirstLetterOfEachWord = function(sentence) {
-    const arr = sentence.split(" ");
-    const updatedArr = arr.map(word => {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    });
-    return updatedArr.join(" ");
-};
 
 const viewPhoto  = function(id)
 {
@@ -75,7 +71,7 @@ const viewPhoto  = function(id)
     </div>
     <div id="photo-title">
         <span id="large-photo-title">
-            ${capitalizeFirstLetterOfEachWord(galleryItems[id].title)}
+            ${capitalizeTheFirstLetterOfEachWord(galleryItems[id].title)}
         </span>
     </div>
     `;

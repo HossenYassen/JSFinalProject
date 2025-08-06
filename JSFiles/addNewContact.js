@@ -1,129 +1,103 @@
-'use strict'
-import { data, fillContactsIntoList } from "./contactsData.js"
+'use strict';
+
+import { capitalizeTheFirstLetterOfEachWord, contactsList, defalutProfilePic, getFormattedDateTime, hideHTMLElement, reshapePhoneNumber, showHTMLElement, validInputs } from "./utilities.js";
+import { data, fillContactsIntoList } from "./contactsData.js";
+import { fillTags } from "./tags.js";
+
+/* 
+  This module is responsible for Adding new contact information when clicked.
+*/
+
+const addNewContactModal = document.getElementById("contact-dialog");
+const addContactBtn = document.getElementById("add-contact-btn");
 
 
-// Handiling Add Contact
+// Form elements
+const header = document.querySelector("#contact-dialog h2");
+const errorMsg = document.getElementById("invalid-input-message");
+const profileImage = document.getElementById("contact-image");
+const name = document.getElementById("contact-name");
+const phone = document.getElementById("contact-phone");
+const age = document.getElementById("contact-age");
+const address = document.getElementById("contact-address");
+const email = document.getElementById("contact-email");
+const comment = document.getElementById("comments-area");
+const tagsSelect = document.getElementById("contact-dialog-tags");
 
-const borderColor = "#6c757d";
-const addContactForm = document.getElementById("add-contact-form");
-addNewContactModal.addEventListener("click", (e) => {
-    e.preventDefault();
+// Show add new contact Modal when clicking on a contact
+addContactBtn.addEventListener("click", () => {
+    resetDialog();
+    header.innerHTML = "Add New Contact";
+    tagsSelect.innerHTML = "";
+    fillTags(tagsSelect);
+    document.querySelector("#contact-dialog-tags option").innerHTML = "Pick A Tag";
+    showHTMLElement(addNewContactModal);
+})
 
-    let validName = false;
-    let validNumber = false;
+// Capitalize the name input
+name.addEventListener("input", (e) => {
+    e.target.value = capitalizeTheFirstLetterOfEachWord(e.target.value);
+});
 
-    // Name Formatting:
-    const nameInput = document.getElementById("new-contact-name");
-    nameInput.addEventListener('input', function (e) {
-        let nameValue = e.target.value;
-        nameValue = captilizedTheFirstLetterOfEachWord(nameValue);
-        e.target.value = nameValue;
-        validName = (nameValue !== "");
-    });
-
-    // Phone Number Formatting:
-    const phoneInput = document.getElementById("new-contact-phone");
-    phoneInput.addEventListener("input", (e) => {
-        e.target.value = validatePhone(e.target.value);
-        validNumber = (e.target.value.length !== 12);
-    });
-
-    const btn = e.target.closest("button");
-    if (btn) {
-        let msg = "";
-        let validName = true;
-        let validPhone = true;
-        const btnID = btn.getAttribute("id")
-        const msgElem = document.getElementById("invalid-input-message");
-        if (btnID === "add-new-contact-button") {
-            if (nameInput.value.trim() === "") {
-                nameInput.style.borderColor = "var(--not-ok-btn-color)";
-                validName = false;
-                msg += "• Name Cannot Be Empty!\n";
-            }
-            else {
-                nameInput.style.borderColor = borderColor;
-            }
-            if (phoneInput.value.trim().length != 12) {
-                phoneInput.style.borderColor = "var(--not-ok-btn-color)";
-                validPhone = false;
-                msg += "• Phone Number Should Consist Of 10 Numbers!"
-            }
-            else {
-                phoneInput.style.borderColor = borderColor;
-            }
-            if (nameInput.value.trim() !== "" && phoneInput.value.trim().length === 12) {
-                let newContact = {};
-                // name: "Hossen Yassen",
-                // age: 24,
-                // phone: "050-959-3495",
-                // profileImg: "../src/images/profile2.png",
-                // tag: "Family",
-                // email: "Hossen.Yassen@Hotmail.Com",
-                // address: "Haifa, Ben Gurion St.",
-                // comment: "I am The Boss!",
-                // isFavorite: true
-
-                newContact.name = nameInput.value.trim();
-                newContact.phone = phoneInput.value.trim();
-                newContact.profileImg = document.getElementById("contact-profile-image").src.trim();
-                newContact.age = document.getElementById("new-contact-age").value.trim();
-                newContact.address = document.getElementById("new-contact-address").value.trim();
-                newContact.email = document.getElementById("new-contact-email").value.trim();
-                newContact.comment = document.getElementById("comments-area").value.trim();
-                newContact.isFavorite = false;
-                newContact.tag = "Friend";
-                newContact.lastUpdateTimeStamp = "";
-
-                data.push(newContact);
-
-                addContactForm.reset();
-                addNewContactModal.style.display = "none";
-                fillContactsIntoList(data);
-            }
-            else {
-                msgElem.innerHTML = msg.replaceAll("\n", "<br>");
-            }
-        }
-        addNewContactModal.style.display = "none";
-    }
+// Reshape phone number format
+phone.addEventListener("input", (e) => {
+    e.target.value = reshapePhoneNumber(e.target.value);
 });
 
 
+// Handle form submission
+const form = document.getElementById("contact-form");
+form.addEventListener("click", (e) => {
+    e.preventDefault();
+    const index = parseInt(e.target.closest("dialog").getAttribute("data-id"));
+    const btn = e.target.closest("button");
 
-// Validation Functions:
-const captilizedTheFirstLetterOfEachWord = function (sentence) {
-    const words = sentence.split(" ");
-    const result = words.map(word => {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    });
-    return result.join(' ');
-}
-
-const validatePhone = function (phoneNumber) {
-    phoneNumber = phoneNumber.replaceAll(/\D/g, '');
-    if (phoneNumber.length > 10) {
-        phoneNumber = phoneNumber.slice(0, 10);
-    }
-
-    let validPhoneNumber = '';
-    for (let i = 0; i < phoneNumber.length; i++) {
-        if (i === 3 || i === 6) {
-            validPhoneNumber += '-';
+    if (btn && btn.id === "contact-button") {
+        if (validInputs(name, phone, age, errorMsg, data, "new")) {
+            data[index].profileImg = profileImage.src || defalutProfilePic;
+            data[index].tag = tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : "";
+            data[index].name = name.value;
+            data[index].phone = phone.value;
+            data[index].age = age.value || "";
+            data[index].address = address.value || "";
+            data[index].email = email.value || "";
+            data[index].comment = comment.value || "";
+            data[index].lastModifiedTimeStamp = getFormattedDateTime();
+            fillContactsIntoList(data);
+            hideHTMLElement(addNewContactModal);
+            form.reset();
         }
-        validPhoneNumber += phoneNumber[i];
+    } else if (btn && btn.getAttribute("id") === "close-contact-dialog") {
+        hideHTMLElement(addNewContactModal);
+        form.reset();
     }
+});
 
-    return validPhoneNumber;
-}
+// Profile image input change handler
+const imgInput = document.getElementById("contact-profile-image");
+imgInput.addEventListener("change", (e) => {
+    const imageFile = e.target.files[0];
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            profileImage.src = e.target.result;
+            profileImage.style.display = "block";
+        };
+        reader.readAsDataURL(imageFile);
+    }
+});
 
-const contactExist = function (name, phone) {
-    data.forEach(contact => {
-        if (contact.name.toLowerCase() === name.toLowerCase()
-            &&
-            contact.phone === phone) {
-            return true;
-        }
-    });
-    return false;
+// Reset Dialog:
+const resetDialog = function () {
+    errorMsg.innerHTML = "";
+    profileImage.src = defalutProfilePic;
+    name.setAttribute("placeholder", "Name");
+    name.style.borderColor = "";
+    phone.setAttribute("placeholder", "Phone Number");
+    phone.style.borderColor = "";
+    age.setAttribute("placeholder", "Age");
+    age.style.borderColor = "";
+    address.setAttribute("placeholder", "Address");
+    email.setAttribute("placeholder", "E-mail");
+    comment.setAttribute("placeholder", "Write Your Comments Here...");
 }
