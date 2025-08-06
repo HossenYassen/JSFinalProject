@@ -66,13 +66,14 @@ const showContactUpdateModal = function (index) {
 const form = document.getElementById("contact-form");
 form.addEventListener("click", (e) => {
     e.preventDefault();
+    resetUpdateDialog   ();
     const index = parseInt(e.target.closest("dialog").getAttribute("data-id"));
     const btn = e.target.closest("button");
 
-    if (btn && btn.id === "contact-button") {
+    if (btn && btn.getAttribute("id") === "contact-button") {
         if (validInputs(name, phone, age, errorMsg, data, "update")) {
             data[index].profileImg = profileImage.src || defalutProfilePic;
-            data[index].tag = tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : data[index].tag;
+            data[index].tag = tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : "";
             data[index].name = name.value || data[index].name;
             data[index].phone = phone.value || data[index].phone;
             data[index].age = age.value || data[index].age;
@@ -84,7 +85,7 @@ form.addEventListener("click", (e) => {
             hideHTMLElement(updateModal);
             form.reset();
         }
-    } else if (btn.getAttribute("id") === "close-contact-dialog") {
+    } else if (btn && btn.getAttribute("id") === "close-contact-dialog") {
         hideHTMLElement(updateModal);
         form.reset();
     }
@@ -103,3 +104,10 @@ imgInput.addEventListener("change", (e) => {
         reader.readAsDataURL(imageFile);
     }
 });
+
+const resetUpdateDialog = function () {
+    errorMsg.innerHTML = "";
+    name.style.borderColor = "";
+    phone.style.borderColor = "";
+    age.style.borderColor = "";
+}

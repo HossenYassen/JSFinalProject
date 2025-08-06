@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="src/icons/phonebookFavIcon.png" type="image/x-icon">
     <title>Phone Book</title>
 </head>
+
 <body>
     <div id="wrapper">
         <header>
@@ -47,7 +48,7 @@
                     </div>
                     <div id="fav-title" class="list-header-titles">
                         <img id="fav-icon-header" class="not-fav-icon" src="src/icons/not_favorite_star.png"
-                            alt="favorite start" , title="favorite start">
+                            alt="favorite start" title="favorite start">
                         <label for="fav-icon-header">Show Favorits</label>
                     </div>
                     <div id="tag-title" class="list-header-titles">
@@ -91,44 +92,49 @@
     </div>
     <!-- Modals -->
 
-    <!-- Add New Contact Modal -->
-    <dialog id="add-contact-dialog">
+    <!-- Modal For: Adding New Contact Or Update Contact -->
+    <dialog id="contact-dialog">
         <h2>Add New Contact</h2>
         <div id="invalid-input-message"><!-- Will Be filled with js --></div>
-        <form id="add-contact-form">
-            <div class="new-contact-modal-divs contact-detail-pic-and-name">
-                <img src="src/icons/profile.png" alt="profile Picture" title="profile Picture">
-                <!-- <input type="file"> -->
-                <input type="url" id="contact-profile-image" name="url" placeholder="Contact Profile Image URL">
+        <div class="contact-modal-divs contact-detail-pic-and-name">
+            <img id="contact-image" src="src/icons/profile.png" alt="profile Picture" title="profile Picture">
+            <label id="new-image-upload" for="contact-profile-image">Upload Image</label>
+            <input type="file" id="contact-profile-image" name="url">
+        </div>
+        <form id="contact-form">
+            <div class="contact-modal-divs">
+                <label id="new-image-upload" for="contact-dialog-tags">Pick Tag</label>
+                <select name="tag" id="contact-dialog-tags">
+                    <!-- Filled Automatically via JS -->
+                </select>
             </div>
-            <div class="new-contact-modal-divs">
-                <label for="new-contact-name">Name</label>
-                <input type="text" id="new-contact-name" name="name" placeholder="Name">
-
+            <div class="contact-modal-divs">
+                <label for="contact-name">Name*</label>
+                <input type="text" id="contact-name" name="name" placeholder="Name">
             </div>
-            <div class="new-contact-modal-divs">
-                <label for="new-contact-phone">Phone</label>
-                <input type="tel" id="new-contact-phone" name="tel" placeholder="Phone Number">
+            <div class="contact-modal-divs">
+                <label for="contact-phone">Phone*</label>
+                <input type="tel" id="contact-phone" name="tel" placeholder="Phone Number">
             </div>
-            <div class="new-contact-modal-divs">
-                <label for="new-contact-age">Age</label>
-                <input type="text" id="new-contact-age" name="age" placeholder="age">
+            <div class="contact-modal-divs">
+                <label for="contact-age">Age</label>
+                <input type="text" id="contact-age" name="age" placeholder="age">
             </div>
-            <div class="new-contact-modal-divs">
-                <label for="new-contact-address">Address</label>
-                <input type="text" id="new-contact-address" name="address" placeholder="Contact Address">
+            <div class="contact-modal-divs">
+                <label for="contact-address">Address</label>
+                <input type="text" id="contact-address" name="address" placeholder="Contact Address">
             </div>
-            <div class="new-contact-modal-divs">
-                <label for="new-email">Email</label>
-                <input type="email" id="new-contact-email" name="email" placeholder="Contact Email">
+            <div class="contact-modal-divs">
+                <label for="email">Email</label>
+                <input type="email" id="contact-email" name="email" placeholder="Contact Email">
             </div>
-            <div class="new-contact-modal-divs add-contact-comments-area">
+            <div class="contact-modal-divs contact-comments-area">
                 <label id="comments-label" for="comments-area">Comments</label>
                 <textarea id="comments-area" name="comment" placeholder="Write Your Comments Here..."></textarea>
             </div>
             <div class="dialog-actions">
-                <button id="add-new-contact-button">Add Contact</button>
-                <button id="close-add-contact-dialog">Cancel</button>
+                <button id="contact-button">Add Contact</button>
+                <button id="close-contact-dialog">Cancel</button>
             </div>
         </form>
     </dialog>
@@ -144,54 +150,13 @@
     </dialog>
 
     <!-- Show Contact Info Modal -->
-     <dialog id="contact-details-dialog">
-
-     </dialog>
-     
-    <!-- Update Contact Info Modal -->
-    <dialog id="update-contact-dialog">
-        <h2>Update Contact Info</h2>
-        <div id="invalid-input-message"><!-- Will Be filled with js --></div>
-        <form id="update-contact-form">
-            <div class="update-modal-divs">
-                <label>Name</label>
-                <input type="text" id="update-contact-name" placeholder="Updated Name">
-            </div>
-            <div class="update-modal-divs">
-                <label>Age</label>
-                <input type="text" id="update-contact-age" placeholder="Updated age">
-
-            </div>
-            <div class="update-modal-divs">
-                <label>Phone</label>
-                <input type="tel" id="update-contact-phone" placeholder="Updated Phone Number">
-            </div>
-            <div class="update-modal-divs">
-                <label>Address</label>
-                <input type="text" id="update-contact-address" placeholder="Updated Contact Address">
-            </div>
-            <div class="update-modal-divs">
-                <label>Email</label>
-                <input type="email" id="update-email" placeholder="Updated Contact Email">
-            </div>
-            <div class="update-modal-divs">
-                <label>Image</label>
-                <input type="url" id="update-contact-profile-image" placeholder="Contact Profile Image URL">
-            </div>
-            <div class="update-modal-divs">
-                <label>Comments</label>
-                <textarea id="update-comments-area" placeholder="Write Your Comments Here..."></textarea>
-            </div>
-            <div class="dialog-actions">
-                <button id="update-button">Update Contact</button>
-                <button id="close-update-contact-dialog">Cancel</button>
-            </div>
-        </form>
+    <dialog id="contact-details-dialog">
+        <!-- Filled dynamically with JS -->
     </dialog>
 
     <!-- Delete Contact Modal -->
     <dialog id="delete-contact-dialog">
-        <h2>Are you sure you want to delete <span id="contact-name"></span> ?</h2>
+        <h2>Are you sure you want to delete <span id="delete-contact-name"></span> ?</h2>
         <p>This action cannot be undone.</p>
         <div class="dialog-actions">
             <button id="confirm-delete-btn">Yes, Delete</button>
@@ -209,8 +174,8 @@
 
 
 
-
     <script type="module" src="./JSFiles/searchContact.js"></script>
+    <script type="module" src="./JSFiles/addNewContact.js"></script>
     <script type="module" src="./JSFiles/deleteAllContacts.js"></script>
 
     <script type="module" src="./JSFiles/filters/tagsFilter.js"></script>
@@ -218,7 +183,9 @@
 
     <script type="module" src="./JSFiles/listItemBtns/showContactInfo.js"></script>
     <script type="module" src="./JSFiles/listItemBtns/addToFavorites.js"></script>
+    <script type="module" src="./JSFiles/listItemBtns/updateContactInfo.js"></script>
     <script type="module" src="./JSFiles/listItemBtns/deleteContact.js"></script>
+
     <script type="module" src="./JSFiles/index.js"></script>
 </body>
 

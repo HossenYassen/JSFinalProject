@@ -60,7 +60,7 @@ export let data =
             comment: "Excellent",
             isFavorite: false,
             addedTimeStamp: "[00:00] - 02/06/2025",
-            lastModifiedTimeStamp: "[00:00] - 02/06/2025"
+            lastModifiedTimeStamp: ""
         }
     ];
 

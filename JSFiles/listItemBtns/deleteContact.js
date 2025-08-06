@@ -9,7 +9,7 @@ import { data, fillContactsIntoList } from "../contactsData.js";
 */
 
 const deleteContactModal = document.getElementById("delete-contact-dialog");
-const contactNameSpan = document.getElementById("contact-name");
+const contactNameSpan = document.getElementById("delete-contact-name");
 
 // Event listener for click events on the contacts list
 contactsList.addEventListener("click", (e) => {
