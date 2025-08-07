@@ -29,11 +29,11 @@
                 </div>
 
                 <div id="search-btns-div">
-                    <button id="add-contact-btn">
+                    <button id="add-contact-btn" type="button">
                         <img class="btns-imgs" src="src/icons/add-user.png" alt="add contact" title="add contact">
                     </button>
 
-                    <button id="delete-all-btn">
+                    <button id="delete-all-btn" type="reset">
                         <img class="btns-imgs" src="src/icons/delete-all.png" alt="delete all" title="delete all">
                     </button>
                 </div>
@@ -49,10 +49,10 @@
                     <div id="fav-title" class="list-header-titles">
                         <img id="fav-icon-header" class="not-fav-icon" src="src/icons/not_favorite_star.png"
                             alt="favorite start" title="favorite start">
-                        <label for="fav-icon-header">Show Favorits</label>
+                        <span>Show Favorits</span>
                     </div>
                     <div id="tag-title" class="list-header-titles">
-                        <select name="tag" id="tags">
+                        <select name="tag" id="tags" aria-label="Sort By Tag">
                             <!-- Filled Automatically via JS -->
                         </select>
                     </div>
@@ -104,17 +104,17 @@
         <form id="contact-form">
             <div class="contact-modal-divs">
                 <label id="new-image-upload" for="contact-dialog-tags">Pick Tag</label>
-                <select name="tag" id="contact-dialog-tags">
+                <select name="tag" id="contact-dialog-tags" aria-label="Pick A Tag">
                     <!-- Filled Automatically via JS -->
                 </select>
             </div>
             <div class="contact-modal-divs">
                 <label for="contact-name">Name*</label>
-                <input type="text" id="contact-name" name="name" placeholder="Name">
+                <input type="text" id="contact-name" name="contact-name" placeholder="Name">
             </div>
             <div class="contact-modal-divs">
                 <label for="contact-phone">Phone*</label>
-                <input type="tel" id="contact-phone" name="tel" placeholder="Phone Number">
+                <input type="tel" id="contact-phone" name="contact-tel" placeholder="Phone Number">
             </div>
             <div class="contact-modal-divs">
                 <label for="contact-age">Age</label>
@@ -122,19 +122,20 @@
             </div>
             <div class="contact-modal-divs">
                 <label for="contact-address">Address</label>
-                <input type="text" id="contact-address" name="address" placeholder="Contact Address">
+                <input type="text" id="contact-address" name="contact-address" placeholder="Contact Address">
             </div>
             <div class="contact-modal-divs">
-                <label for="email">Email</label>
-                <input type="email" id="contact-email" name="email" placeholder="Contact Email">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="contact-email" placeholder="Contact Email">
             </div>
             <div class="contact-modal-divs contact-comments-area">
                 <label id="comments-label" for="comments-area">Comments</label>
                 <textarea id="comments-area" name="comment" placeholder="Write Your Comments Here..."></textarea>
             </div>
             <div class="dialog-actions">
-                <button id="contact-button">Add Contact</button>
-                <button id="close-contact-dialog">Cancel</button>
+                <button id="add" type="button">Add Contact</button>
+                <button id="save" type="button">Save Update</button>
+                <button id="close-contact-dialog" type="button">Cancel</button>
             </div>
         </form>
     </dialog>
@@ -144,8 +145,8 @@
         <h2>Are you sure you want to delete all contacts?</h2>
         <p>This action cannot be undone.</p>
         <div class="dialog-actions">
-            <button id="confirm-delete-all-btn">Yes, Delete All</button>
-            <button id="cancel-delete-all-btn">Cancel</button>
+            <button id="confirm-delete-all-btn" type="button">Yes, Delete All</button>
+            <button id="cancel-delete-all-btn" type="button">Cancel</button>
         </div>
     </dialog>
 

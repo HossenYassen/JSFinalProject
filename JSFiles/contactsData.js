@@ -89,7 +89,7 @@ export const fillContactsIntoList = function (contactsData) {
         const sorted = sortData(contactsData);
         contactsList.innerHTML = "";
         sorted.forEach((elem, idx) => {
-            let li = document.createElement("li");
+            const li = document.createElement("li");
             li.className = "list-row";
             li.setAttribute("data-id", idx);
             li.innerHTML =

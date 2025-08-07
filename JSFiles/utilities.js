@@ -85,7 +85,7 @@ export const validInputs = function (nameElem, phoneElem, ageElem, mgsElem, data
     let validNumber = true;
     let validAge = true;
     let msg = "";
-    if (type === "new") {
+    if (type === true) {
         // Validate name input
         if (nameElem.value.trim() === "") {
             nameElem.style.borderColor = "var(--not-ok-btn-color)";
@@ -102,6 +102,7 @@ export const validInputs = function (nameElem, phoneElem, ageElem, mgsElem, data
             msg += "• Phone Number Should Consist Of 10 Numbers!\n";
         } else {
             phoneElem.style.borderColor = "";
+            validNumber = true;
         }
 
         // Validate age input
@@ -114,6 +115,7 @@ export const validInputs = function (nameElem, phoneElem, ageElem, mgsElem, data
                 msg += "• Invalid Age! Age must be in the range [1-125]\n";
             } else {
                 ageElem.style.borderColor = "";
+                validAge = true;
             }
         }
     }

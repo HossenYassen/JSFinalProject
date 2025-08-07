@@ -33,6 +33,7 @@ const address = document.getElementById("contact-address");
 const email = document.getElementById("contact-email");
 const comment = document.getElementById("comments-area");
 const tagsSelect = document.getElementById("contact-dialog-tags");
+const saveBtn = document.getElementById("save");
 
 // Capitalize the name input
 name.addEventListener("input", (e) => {
@@ -58,7 +59,9 @@ const showContactUpdateModal = function (index) {
     address.setAttribute("placeholder", `Update: ${data[index].address}`);
     email.setAttribute("placeholder", `Update: ${data[index].email}`);
     comment.setAttribute("placeholder", `Update: ${data[index].comment}`);
-    document.getElementById("contact-button").innerHTML = "Update Contact";
+    saveBtn.innerHTML = "Update Contact";
+    showHTMLElement(saveBtn);
+    hideHTMLElement(document.getElementById("add"));
     showHTMLElement(updateModal);
 };
 
@@ -66,13 +69,12 @@ const showContactUpdateModal = function (index) {
 const form = document.getElementById("contact-form");
 form.addEventListener("click", (e) => {
     e.preventDefault();
-    resetUpdateDialog   ();
     const index = parseInt(e.target.closest("dialog").getAttribute("data-id"));
     const btn = e.target.closest("button");
 
-    if (btn && btn.getAttribute("id") === "contact-button") {
-        if (validInputs(name, phone, age, errorMsg, data, "update")) {
-            data[index].profileImg = profileImage.src || defalutProfilePic;
+    if (btn && btn.getAttribute("id") === "save") {
+        if (data[index] && validInputs(name, phone, age, errorMsg, data, false)) {
+            data[index].profileImg = profileImage.src !== null ? profileImage.src : defalutProfilePic;
             data[index].tag = tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : "";
             data[index].name = name.value || data[index].name;
             data[index].phone = phone.value || data[index].phone;
@@ -88,7 +90,9 @@ form.addEventListener("click", (e) => {
     } else if (btn && btn.getAttribute("id") === "close-contact-dialog") {
         hideHTMLElement(updateModal);
         form.reset();
+        errorMsg.innerHTML = "";
     }
+    
 });
 
 // Profile image input change handler
@@ -104,10 +108,3 @@ imgInput.addEventListener("change", (e) => {
         reader.readAsDataURL(imageFile);
     }
 });
-
-const resetUpdateDialog = function () {
-    errorMsg.innerHTML = "";
-    name.style.borderColor = "";
-    phone.style.borderColor = "";
-    age.style.borderColor = "";
-}
