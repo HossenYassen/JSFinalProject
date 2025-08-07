@@ -654,7 +654,8 @@ dialog .dialog-actions {
 }
 
 #edit-form button[type="submit"],
-#contact-button,
+#add,
+#save,
 #add-new-contact-button {
   background-color: var(--ok-btn-color);
 }
