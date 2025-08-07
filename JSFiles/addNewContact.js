@@ -73,7 +73,7 @@ form.addEventListener("click", (e) => {
                 address: address.value || "",
                 email: email.value || "",
                 comment: comment.value || "",
-                lastModifiedTimeStamp: getFormattedDateTime(),
+                addedTimeStamp: getFormattedDateTime()
             }
             data.push(newContact);
             fillContactsIntoList(data);
@@ -166,4 +166,5 @@ export const addValidInputs = function (nameElem, phoneElem, ageElem, mgsElem, d
 
     mgsElem.innerText = msg;
     return validName && validNumber && validAge;
+
 }
