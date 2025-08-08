@@ -381,6 +381,7 @@ html::-webkit-scrollbar,
   background-color: var(--dark1);
   border-bottom: 2px solid var(--dark4);
   height: 80px;
+  transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
 .vanish {
@@ -394,7 +395,7 @@ html::-webkit-scrollbar,
 .listRowHover {
   background-color: var(--list-row-hover);
   color: black;
-  transition: background-color 0.8s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
 .body-cell {
