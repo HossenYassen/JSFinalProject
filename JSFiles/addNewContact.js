@@ -6,6 +6,7 @@ import {
     defalutProfilePic,
     getFormattedDateTime,
     hideHTMLElement,
+    reshapeAge,
     reshapePhoneNumber,
     showHTMLElement,
     validInputs
@@ -56,6 +57,11 @@ phone.addEventListener("input", (e) => {
     e.target.value = reshapePhoneNumber(e.target.value);
 });
 
+// Reshape age to be in range [1-125]
+age.addEventListener("input", (e) => {
+    e.target.value = reshapeAge(e.target.value);
+})
+
 // Handle form submission
 form.addEventListener("click", (e) => {
     e.preventDefault();
@@ -63,7 +69,7 @@ form.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
 
     if (btn && btn.getAttribute("id") === "add") {
-        if (addValidInputs(name, phone, age, errorMsg, data, true)) {
+        if (validInputs(name, phone, age, errorMsg, data, true)) {
             let newContact = {
                 profileImg: image.src || defalutProfilePic,
                 tag: tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : "",
@@ -73,8 +79,7 @@ form.addEventListener("click", (e) => {
                 address: address.value || "",
                 email: email.value || "",
                 comment: comment.value || "",
-                addedTimeStamp: getFormattedDateTime(),
-                lastModifiedTimeStamp: ""
+                lastModifiedTimeStamp: getFormattedDateTime(),
             }
             data.push(newContact);
             fillContactsIntoList(data);
@@ -113,60 +118,3 @@ function resetDialog() {
     email.setAttribute("placeholder", "E-mail");
     comment.setAttribute("placeholder", "Write Your Comments Here...");
 }
-
-
-export const addValidInputs = function (nameElem, phoneElem, ageElem, mgsElem, dataArray, type) {
-    let validName = true;
-    let validNumber = true;
-    let validAge = true;
-    let msg = "";
-    if (type === true) {
-        // Validate name input
-        if (nameElem.value.trim() === "") {
-            nameElem.style.borderColor = "var(--not-ok-btn-color)";
-            validName = false;
-            msg += "• Name Cannot Be Empty!\n";
-        } else {
-            nameElem.style.borderColor = "";
-        }
-
-        // Validate phone input
-        if (phoneElem.value.trim().length != 12) {
-            phoneElem.style.borderColor = "var(--not-ok-btn-color)";
-            validNumber = false;
-            msg += "• Phone Number Should Consist Of 10 Numbers!\n";
-        } else {
-            phoneElem.style.borderColor = "";
-            validNumber = true;
-        }
-
-        // Validate age input
-        const ageValue = ageElem.value.trim();
-        if (ageValue !== "") {
-            const age = parseInt(ageValue);
-            if (!(age >= 1 && age <= 125)) {
-                ageElem.style.borderColor = "var(--not-ok-btn-color)";
-                validAge = false;
-                msg += "• Invalid Age! Age must be in the range [1-125]\n";
-            } else {
-                ageElem.style.borderColor = "";
-                validAge = true;
-            }
-        }
-    }
-
-    // Check if contact already exists
-    const name = nameElem.value.trim();
-    const phone = phoneElem.value.trim();
-    if (contactExist(name, phone, dataArray)) {
-        msg += "• This Contact Already Exists!\n";
-        validNumber = false;
-    }
-
-
-
-    mgsElem.innerText = msg;
-    return validName && validNumber && validAge;
-
-}
-
