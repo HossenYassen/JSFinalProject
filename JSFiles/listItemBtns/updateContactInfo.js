@@ -1,7 +1,7 @@
 'use strict';
 
 import { capitalizeTheFirstLetterOfEachWord, contactsList, defalutProfilePic, getFormattedDateTime, hideHTMLElement, reshapePhoneNumber, showHTMLElement, validInputs } from "../utilities.js";
-import { data, fillContactsIntoList } from "../contactsData.js";
+import { data, fillContactsIntoList, getContactFromId } from "../contactsData.js";
 import { fillTags } from "../tags.js";
 
 /* 
@@ -14,7 +14,7 @@ const updateModal = document.getElementById("contact-dialog");
 contactsList.addEventListener("click", (e) => {
     const li = e.target.closest("li");
     if (li) {
-        const index = parseInt(li.getAttribute("data-id"));
+        const index = getContactFromId(parseInt(li.getAttribute("data-id")));
         const btn = e.target.closest("div");
         if (btn && btn.classList.contains("update-button")) {
             showContactUpdateModal(index);

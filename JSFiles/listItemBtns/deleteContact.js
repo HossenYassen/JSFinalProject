@@ -1,7 +1,7 @@
 'use strict'
 
 import { contactsList, hideHTMLElement, showHTMLElement } from "../utilities.js";
-import { data, fillContactsIntoList } from "../contactsData.js";
+import { data, fillContactsIntoList, getContactFromId } from "../contactsData.js";
 
 /* 
   This module is responsible for handling the contact deletion functionality.
@@ -17,7 +17,7 @@ contactsList.addEventListener("click", (e) => {
     if (li) {
         const btn = e.target.closest("div");
         if (btn && btn.classList.contains("delete-contact-button")) {
-            const idx = li.getAttribute("data-id");
+            const idx = getContactFromId(parseInt(li.getAttribute("data-id")));
             contactNameSpan.innerHTML = data[idx].name;
             contactNameSpan.style.color = "var(--not-ok-btn-color)"
             deleteContactModal.setAttribute("data-id", idx);

@@ -1,7 +1,7 @@
 'use strict'
 
 import { contactsList, hideHTMLElement, showHTMLElement } from "../utilities.js";
-import { data } from "../contactsData.js";
+import { data, getContactFromId } from "../contactsData.js";
 
 /* 
   This module is responsible for showing the full information about a contact when clicked.
@@ -28,7 +28,7 @@ contactsList.addEventListener("click", (e) => {
         if (btn && !btnClassList.contains("update-button")
             && !btnClassList.contains("delete-contact-button")
             && !btnClassList.contains("row-fav")) {
-            const dataId = li.getAttribute("data-id");
+            const dataId = getContactFromId(parseInt(li.getAttribute("data-id")));
             showContactFullInfo(dataId);
         }
     }

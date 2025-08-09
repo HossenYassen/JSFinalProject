@@ -1,16 +1,17 @@
 'use strict'
 import {
-            defalutProfilePic,
-            favoriteIcon,
-            notFavoriteIcon,
-            contactsList
-        } from "./utilities.js";
+    defalutProfilePic,
+    favoriteIcon,
+    notFavoriteIcon,
+    contactsList
+} from "./utilities.js";
 import { getTagClass, findTag } from "./tags.js";
 
 // Contacts Data Objects Array
 export let data =
     [
         {
+            id: 0,
             name: "Hossen Yassen",
             age: 24,
             phone: "050-959-3495",
@@ -24,6 +25,7 @@ export let data =
             lastModifiedTimeStamp: ""
         },
         {
+            id: 1,
             name: "Sandra Jammal",
             age: 21,
             phone: "050-123-3456",
@@ -37,6 +39,7 @@ export let data =
             lastModifiedTimeStamp: ""
         },
         {
+            id: 2,
             name: "Celine Jammal",
             age: 21,
             phone: "050-111-1234",
@@ -50,6 +53,7 @@ export let data =
             lastModifiedTimeStamp: ""
         },
         {
+            id: 3,
             name: "Ahmad Yassen",
             age: 20,
             phone: "050-225-5444",
@@ -68,8 +72,11 @@ export let data =
 
 //Sorts an array of contact objects alphabetically by the 'name' property in ascending order.
 const sortData = function (contactsData) {
-    const sorted = contactsData.sort((a, b) => a.name < b.name ? -1 : 1);
-    return sorted;
+    let favorites = contactsData.filter(contact => contact.isFavorite);
+    favorites = favorites.sort((a, b) => a.name < b.name ? -1 : 1);
+    let notFavorites = contactsData.filter(contact => !contact.isFavorite);
+    notFavorites = notFavorites.sort((a, b) => a.name < b.name ? -1 : 1);
+    return [...favorites, ...notFavorites];
 };
 
 // Handiling Showing Contact In Table
@@ -91,7 +98,7 @@ export const fillContactsIntoList = function (contactsData) {
         sorted.forEach((elem, idx) => {
             const li = document.createElement("li");
             li.className = "list-row";
-            li.setAttribute("data-id", idx);
+            li.setAttribute("data-id", elem.id);
             li.innerHTML =
                 `
         <div class="body-cell row-index">${idx + 1}</div>
@@ -131,7 +138,7 @@ export const fillContactsIntoList = function (contactsData) {
 contactsList.addEventListener("mouseover", (e) => {
     e.preventDefault();
     const li = e.target.closest("li");
-    if(li){
+    if (li) {
         li.classList.add("listRowHover");
     }
 });
@@ -140,7 +147,15 @@ contactsList.addEventListener("mouseover", (e) => {
 contactsList.addEventListener("mouseout", (e) => {
     e.preventDefault();
     const li = e.target.closest("li");
-    if(li){
+    if (li) {
         li.classList.remove("listRowHover");
     }
 });
+
+export const getContactFromId = function (id) {
+    for (let i = 0; i < data.length; i++) {
+        if (parseInt(data[i].id) === id)
+            return i;
+    }
+    return -1;
+};

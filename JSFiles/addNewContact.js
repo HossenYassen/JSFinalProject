@@ -71,6 +71,7 @@ form.addEventListener("click", (e) => {
     if (btn && btn.getAttribute("id") === "add") {
         if (validInputs(name, phone, age, errorMsg, data, true)) {
             let newContact = {
+                id: data.length,
                 name: name.value,
                 age: age.value || "",
                 phone: phone.value,
