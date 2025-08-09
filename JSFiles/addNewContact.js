@@ -71,15 +71,16 @@ form.addEventListener("click", (e) => {
     if (btn && btn.getAttribute("id") === "add") {
         if (validInputs(name, phone, age, errorMsg, data, true)) {
             let newContact = {
+                name: name.value,
+                age: age.value || "",
+                phone: phone.value,
                 profileImg: image.src || defalutProfilePic,
                 tag: tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : "",
-                name: name.value,
-                phone: phone.value,
-                age: age.value || "",
-                address: address.value || "",
                 email: email.value || "",
+                address: address.value || "",
                 comment: comment.value || "",
-                lastModifiedTimeStamp: getFormattedDateTime(),
+                addedTimeStamp: getFormattedDateTime(),
+                lastModifiedTimeStamp: ""
             }
             data.push(newContact);
             fillContactsIntoList(data);

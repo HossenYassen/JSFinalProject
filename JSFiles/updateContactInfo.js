@@ -79,13 +79,13 @@ form.addEventListener("click", (e) => {
 
     if (btn && btn.getAttribute("id") === "save") {
         if (data[index] && validInputs(name, phone, age, errorMsg, data, false)) {
+            data[index].name = name.value || data[index].name;
+            data[index].age = age.value || data[index].age;
+            data[index].phone = phone.value || data[index].phone;
             data[index].profileImg = profileImage.src !== null ? profileImage.src : defalutProfilePic;
             data[index].tag = tagsSelect.value !== "Sort By Tag" ? tagsSelect.value : "";
-            data[index].name = name.value || data[index].name;
-            data[index].phone = phone.value || data[index].phone;
-            data[index].age = age.value || data[index].age;
-            data[index].address = address.value || data[index].address;
             data[index].email = email.value || data[index].email;
+            data[index].address = address.value || data[index].address;
             data[index].comment = comment.value || data[index].comment;
             data[index].lastModifiedTimeStamp = getFormattedDateTime();
             fillContactsIntoList(data);
