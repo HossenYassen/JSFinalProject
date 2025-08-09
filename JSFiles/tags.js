@@ -35,7 +35,8 @@ export const fillTags = (tagsSelect, withHeader) => {
         opt.setAttribute("value", tag.name)
         if (idx === 0)
             opt.setAttribute("selected", "selected");
-        opt.innerHTML = `${tag.name}`
+        opt.innerHTML = `${tag.name}`;
+        // opt.style.backgroundColor = `var(--${tag.class})`;
         tagsSelect.appendChild(opt);
     });
 

@@ -23,6 +23,22 @@
   --profile-pic-w: 64px;
   --box-shadow-effects: 0 5px 10px 0 rgba(0, 0, 0, 0.25),
     0 1.5px 6px 0 rgba(60, 60, 60, 0.11);
+
+  /* For Tags */
+  --family-tag: var(--not-ok-btn-color);
+  --school-tag: var(--tag-color);
+  --work-tag: var(--ok-btn-color);
+  --friend-tag: #dfe229;
+}
+
+:root.light-mode {
+   --dark1: #ffffff;
+  --dark2: #f0f0f0;
+  --dark3: #e0e0e0;
+  --dark4: #d0d0d0;
+  --dark5: #c0c0c0;
+  
+  --text-color: #000000;
 }
 @font-face {
   font-family: "Inter";
@@ -334,16 +350,15 @@ html::-webkit-scrollbar,
   background-color: var(--dark5);
 }
 
-#contact-dialog-tags{
+#contact-dialog-tags {
   height: 100%;
   width: 100%;
 }
 
-#contact-modal-divs{
+#contact-modal-divs {
   grid-column: 2;
   grid-row: 1;
 }
-
 
 #phone-title {
   flex-grow: 1.5;
@@ -578,10 +593,9 @@ dialog input[type="email"],
   font-size: 1rem;
 }
 
-dialog input[type="file"]{
+dialog input[type="file"] {
   display: none;
 }
-
 
 #comments-area {
   min-width: 250px;
@@ -725,8 +739,6 @@ dialog .dialog-actions {
   color: var(--text-color);
   font-size: 1.1rem;
 }
-
-
 
 .contact-detail img {
   width: var(--buttons-width);
